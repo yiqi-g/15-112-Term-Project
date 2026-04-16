@@ -1,0 +1,88 @@
+"""
+A compatibility shim for pygame.fastevent based on pygame.event.
+This module was deprecated in pygame 2.2, and is scheduled for removal in a
+future pygame version. If you are using pygame.fastevent, please migrate to
+using regular pygame.event module
+"""
+
+import src.cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_313.pygame.event
+import src.cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_313.pygame.display
+from src.cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_313.pygame import error, register_quit
+from src.cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_313.pygame.event import Event
+
+_ft_init = False
+
+
+def _ft_init_check():
+    """
+    Raises error if module is not init
+    """
+    if not _ft_init:
+        raise error("fastevent system not initialized")
+
+
+def _quit_hook():
+    """
+    Hook that gets run to quit module
+    """
+    global _ft_init
+    _ft_init = False
+
+
+def init():
+    """init() -> None
+    initialize pygame.fastevent
+    """
+    global _ft_init
+    if not src.cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_313.pygame.display.get_init():
+        raise error("video system not initialized")
+
+    register_quit(_quit_hook)
+    _ft_init = True
+
+
+def get_init():
+    """get_init() -> bool
+    returns True if the fastevent module is currently initialized
+    """
+    return _ft_init
+
+
+def pump():
+    """pump() -> None
+    internally process pygame event handlers
+    """
+    _ft_init_check()
+    src.cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_313.pygame.event.pump()
+
+
+def wait():
+    """wait() -> Event
+    wait for an event
+    """
+    _ft_init_check()
+    return src.cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_313.pygame.event.wait()
+
+
+def poll():
+    """poll() -> Event
+    get an available event
+    """
+    _ft_init_check()
+    return src.cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_313.pygame.event.poll()
+
+
+def get():
+    """get() -> list of Events
+    get all events from the queue
+    """
+    _ft_init_check()
+    return src.cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_313.pygame.event.get()
+
+
+def post(event: Event):
+    """post(Event) -> None
+    place an event on the queue
+    """
+    _ft_init_check()
+    src.cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_313.pygame.event.post(event)
