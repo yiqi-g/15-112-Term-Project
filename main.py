@@ -14,6 +14,6 @@ from PIL import Image #this is the pillow module for image recognition
 
 
 def main():
-    runApp(width = 400, height = 400)
+    runApp(width = view.newWindow.width, height = view.newWindow.width)
 
 main()
