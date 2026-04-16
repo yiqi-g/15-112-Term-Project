@@ -11,7 +11,7 @@ __all__ = [
     "get_fonts",
 ]
 
-from pygame import draw
+from pygame import draw, encode_file_path
 from pygame._freetype import (
     Font as _Font,
     _internal_mod_init,
@@ -21,8 +21,7 @@ from pygame._freetype import (
     init,
     quit,
 )
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.sysfont import SysFont as _SysFont, get_fonts, match_font
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame import encode_file_path
+from pygame.sysfont import SysFont as _SysFont, get_fonts, match_font
 
 
 class Font(_Font):

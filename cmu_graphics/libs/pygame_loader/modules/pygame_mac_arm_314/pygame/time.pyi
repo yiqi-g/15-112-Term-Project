@@ -7,7 +7,7 @@ Times in pygame-ce are represented in milliseconds (1/1000 of a second).
 
 from typing import Union, final
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.event import Event
+from pygame.event import Event
 
 def get_ticks() -> int:
     """Get the time in milliseconds.

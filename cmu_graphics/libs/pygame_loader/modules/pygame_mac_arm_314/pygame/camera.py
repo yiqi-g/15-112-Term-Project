@@ -4,7 +4,7 @@ import sys
 import warnings
 from abc import ABC, abstractmethod
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame import error
+from pygame import error
 
 _is_init = False
 
@@ -89,13 +89,13 @@ except ImportError:
 def _setup_backend(backend):
     global list_cameras, Camera
     if backend == "opencv-mac":
-        from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame import _camera_opencv
+        from pygame import _camera_opencv
 
         list_cameras = _camera_opencv.list_cameras_darwin
         Camera = _camera_opencv.CameraMac
 
     elif backend == "opencv":
-        from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame import _camera_opencv
+        from pygame import _camera_opencv
 
         list_cameras = _camera_opencv.list_cameras
         Camera = _camera_opencv.Camera

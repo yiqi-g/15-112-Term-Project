@@ -1,7 +1,7 @@
 from collections.abc import Mapping
 from typing import Optional
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.joystick import JoystickType
+from pygame.joystick import JoystickType
 
 def init() -> None: ...
 def get_init() -> bool: ...

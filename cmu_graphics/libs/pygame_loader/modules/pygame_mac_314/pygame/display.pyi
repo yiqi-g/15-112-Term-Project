@@ -54,10 +54,10 @@ required).
 from collections.abc import Iterable
 from typing import Literal, Optional, Union, overload
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame._sdl2 import Window
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.constants import FULLSCREEN
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.surface import Surface
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.typing import (
+from pygame._sdl2 import Window
+from pygame.constants import FULLSCREEN
+from pygame.surface import Surface
+from pygame.typing import (
     ColorLike,
     IntPoint,
     Point,

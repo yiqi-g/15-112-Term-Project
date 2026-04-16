@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List, Optional, Sequence, Tuple, Union
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_311.pygame.surface import Surface
+from pygame.surface import Surface
 
 def get_backends() -> List[str]: ...
 def init(backend: Optional[str] = None) -> None: ...

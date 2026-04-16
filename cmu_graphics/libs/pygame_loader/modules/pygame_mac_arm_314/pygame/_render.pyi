@@ -1,11 +1,11 @@
 from collections.abc import Iterable
 from typing import Any, Optional, Protocol, Union, final
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.color import Color
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.rect import Rect
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.surface import Surface
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.typing import ColorLike, IntPoint, Point, RectLike, SequenceLike
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.window import Window
+from pygame.color import Color
+from pygame.rect import Rect
+from pygame.surface import Surface
+from pygame.typing import ColorLike, IntPoint, Point, RectLike, SequenceLike
+from pygame.window import Window
 
 class _DrawableClass(Protocol):
     # Object that has the draw method that accepts area and dest arguments

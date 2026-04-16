@@ -16,9 +16,9 @@ from typing import (
 # Protocol added in python 3.8
 from typing_extensions import Protocol
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_311.pygame.rect import Rect
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_311.pygame.surface import Surface
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_311.pygame.mask import Mask
+from pygame.rect import Rect
+from pygame.surface import Surface
+from pygame.mask import Mask
 
 from ._common import RectValue, Coordinate
 

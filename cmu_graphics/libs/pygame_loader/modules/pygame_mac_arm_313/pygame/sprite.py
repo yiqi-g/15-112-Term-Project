@@ -89,11 +89,11 @@ from typing import Generic, TypeVar
 from weakref import WeakSet
 from warnings import warn
 
-import cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_313.pygame as pygame
+import pygame
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_313.pygame.rect import Rect
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_313.pygame.time import get_ticks
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_313.pygame.mask import from_surface
+from pygame.rect import Rect
+from pygame.time import get_ticks
+from pygame.mask import from_surface
 
 
 class Sprite:

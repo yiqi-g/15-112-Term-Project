@@ -1,3 +1,3 @@
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_312.pygame._sdl2.audio import *
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_312.pygame._sdl2.sdl2 import *
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_312.pygame._sdl2.video import *
+from pygame._sdl2.audio import *
+from pygame._sdl2.sdl2 import *
+from pygame._sdl2.video import *

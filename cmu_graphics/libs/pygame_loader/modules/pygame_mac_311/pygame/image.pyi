@@ -1,7 +1,7 @@
 from typing import Optional, Sequence, Tuple, Union
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_311.pygame.bufferproxy import BufferProxy
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_311.pygame.surface import Surface
+from pygame.bufferproxy import BufferProxy
+from pygame.surface import Surface
 
 from ._common import FileArg, Literal
 

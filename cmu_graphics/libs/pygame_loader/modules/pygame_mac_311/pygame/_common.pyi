@@ -4,9 +4,9 @@ from typing import IO, Callable, Sequence, Tuple, Union
 from typing_extensions import Literal as Literal
 from typing_extensions import Protocol
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_311.pygame.color import Color
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_311.pygame.math import Vector2
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_311.pygame.rect import Rect
+from pygame.color import Color
+from pygame.math import Vector2
+from pygame.rect import Rect
 
 # For functions that take a file name
 AnyPath = Union[str, bytes, PathLike[str], PathLike[bytes]]

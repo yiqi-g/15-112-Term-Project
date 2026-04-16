@@ -1,5 +1,5 @@
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.surface import Surface
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.typing import ColorLike, Point, RectLike, SequenceLike
+from pygame.surface import Surface
+from pygame.typing import ColorLike, Point, RectLike, SequenceLike
 
 def pixel(surface: Surface, x: int, y: int, color: ColorLike, /) -> None: ...
 def hline(surface: Surface, x1: int, x2: int, y: int, color: ColorLike, /) -> None: ...

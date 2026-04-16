@@ -1,9 +1,9 @@
 import sys
 from typing import Any, Optional, Union
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.rect import Rect
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.surface import Surface
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.typing import ColorLike, Point, RectLike
+from pygame.rect import Rect
+from pygame.surface import Surface
+from pygame.typing import ColorLike, Point, RectLike
 from typing_extensions import deprecated  # added in 3.13
 
 def from_surface(surface: Surface, threshold: int = 127) -> Mask: ...

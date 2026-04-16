@@ -1,10 +1,10 @@
 from collections.abc import Callable, Iterable
 from typing import Any, Optional, Union
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.color import Color
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.rect import Rect
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.surface import Surface
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.typing import ColorLike, FileLike, RectLike
+from pygame.color import Color
+from pygame.rect import Rect
+from pygame.surface import Surface
+from pygame.typing import ColorLike, FileLike, RectLike
 from typing_extensions import deprecated  # added in 3.13
 
 def get_error() -> str: ...

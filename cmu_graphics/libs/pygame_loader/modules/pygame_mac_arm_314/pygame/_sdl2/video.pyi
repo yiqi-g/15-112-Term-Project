@@ -1,11 +1,11 @@
 from collections.abc import Generator, Iterable
 from typing import Any, Optional, Union
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.color import Color
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.rect import Rect
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.surface import Surface
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.typing import ColorLike, Point, RectLike
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.window import Window as Window
+from pygame.color import Color
+from pygame.rect import Rect
+from pygame.surface import Surface
+from pygame.typing import ColorLike, Point, RectLike
+from pygame.window import Window as Window
 
 WINDOWPOS_UNDEFINED: int
 WINDOWPOS_CENTERED: int

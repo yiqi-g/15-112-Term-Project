@@ -40,7 +40,7 @@ if the sound sample type requests this.
 import warnings
 
 import numpy
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame import mixer
+from pygame import mixer
 
 __all__ = [
     "array",

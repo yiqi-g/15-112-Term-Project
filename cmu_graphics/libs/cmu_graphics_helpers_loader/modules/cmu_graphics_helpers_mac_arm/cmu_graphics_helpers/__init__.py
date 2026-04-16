@@ -1,4 +1,4 @@
-from ........cmu_graphics.libs.cmu_graphics_helpers_loader.modules.cmu_graphics_helpers_mac_arm.cmu_graphics_helpers.cmu_graphics_helpers import *
+from .cmu_graphics_helpers import *
 
 __doc__ = cmu_graphics_helpers.__doc__
 if hasattr(cmu_graphics_helpers, "__all__"):

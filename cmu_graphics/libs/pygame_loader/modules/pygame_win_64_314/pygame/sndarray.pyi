@@ -1,5 +1,5 @@
 import numpy
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.mixer import Sound
+from pygame.mixer import Sound
 from typing_extensions import deprecated  # added in 3.13
 
 def array(sound: Sound) -> numpy.ndarray: ...

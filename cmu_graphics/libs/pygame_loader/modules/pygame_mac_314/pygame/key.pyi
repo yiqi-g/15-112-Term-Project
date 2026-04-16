@@ -231,7 +231,7 @@ for ``KMOD_NONE``, which should be compared using equals ``==``). For example:
 
 from typing import NoReturn
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.typing import RectLike
+from pygame.typing import RectLike
 
 class ScancodeWrapper(tuple[bool, ...]):
     def __iter__(self) -> NoReturn: ...

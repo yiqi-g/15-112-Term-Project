@@ -1,9 +1,6 @@
-import model
-import controller
-
-from cmu_graphics import *
-from cmu_cpcs_utils import *
-import math
+# from cmu_graphics import *
+# from cmu_cpcs_utils import *
+# import math
 
 class Window:
     def __init__(self, width, height, backgroundColor) -> None:
@@ -20,6 +17,7 @@ class UI_Slider:
         self.name = name
         self.lowest = lowest
         self.highest = highest
+
 
 def redrawAll(app):
     newWindow = Window(400, 400, 'black')

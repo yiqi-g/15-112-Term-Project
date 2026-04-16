@@ -8,8 +8,8 @@ from collections.abc import Callable
 from os import environ
 from typing import Optional
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.system import get_cpu_instruction_sets
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.version import ver
+from pygame.system import get_cpu_instruction_sets
+from pygame.version import ver
 
 ImportResult = tuple[str, bool, Optional[Callable]]
 
@@ -101,8 +101,8 @@ def print_debug_info(filename=None):
         # pylint: disable=unused-argument
         return (-1, -1, -1)
 
-    from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.base import get_sdl_version
-    from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.display import (
+    from pygame.base import get_sdl_version
+    from pygame.display import (
         get_driver as get_display_driver,
         get_init as display_init,
     )

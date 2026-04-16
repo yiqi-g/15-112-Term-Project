@@ -64,9 +64,9 @@ following formats.
 
 from typing import Literal, Optional, Union
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.bufferproxy import BufferProxy
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.surface import Surface
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.typing import FileLike, IntPoint, Point
+from pygame.bufferproxy import BufferProxy
+from pygame.surface import Surface
+from pygame.typing import FileLike, IntPoint, Point
 from typing_extensions import (
     Buffer,  # collections.abc 3.12
     deprecated,  # added in 3.13

@@ -1,6 +1,6 @@
 from typing import Any, Optional, overload
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.typing import _PathLike
+from pygame.typing import _PathLike
 
 def encode_string(
     obj: Optional[_PathLike],

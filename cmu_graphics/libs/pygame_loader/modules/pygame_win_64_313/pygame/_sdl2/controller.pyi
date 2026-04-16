@@ -1,6 +1,6 @@
 from typing import Dict, Mapping, Optional
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_313.pygame.joystick import JoystickType
+from pygame.joystick import JoystickType
 
 def init() -> None: ...
 def get_init() -> bool: ...

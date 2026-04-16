@@ -5,10 +5,10 @@ future pygame version. If you are using pygame.fastevent, please migrate to
 using regular pygame.event module
 """
 
-import cmu_graphics.libs.pygame_loader.modules.pygame_mac_312.pygame.event
-import cmu_graphics.libs.pygame_loader.modules.pygame_mac_312.pygame.display
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_312.pygame import error, register_quit
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_312.pygame.event import Event
+import pygame.event
+import pygame.display
+from pygame import error, register_quit
+from pygame.event import Event
 
 _ft_init = False
 
@@ -34,7 +34,7 @@ def init():
     initialize pygame.fastevent
     """
     global _ft_init
-    if not cmu_graphics.libs.pygame_loader.modules.pygame_mac_312.pygame.display.get_init():
+    if not pygame.display.get_init():
         raise error("video system not initialized")
 
     register_quit(_quit_hook)
@@ -53,7 +53,7 @@ def pump():
     internally process pygame event handlers
     """
     _ft_init_check()
-    cmu_graphics.libs.pygame_loader.modules.pygame_mac_312.pygame.event.pump()
+    pygame.event.pump()
 
 
 def wait():
@@ -61,7 +61,7 @@ def wait():
     wait for an event
     """
     _ft_init_check()
-    return cmu_graphics.libs.pygame_loader.modules.pygame_mac_312.pygame.event.wait()
+    return pygame.event.wait()
 
 
 def poll():
@@ -69,7 +69,7 @@ def poll():
     get an available event
     """
     _ft_init_check()
-    return cmu_graphics.libs.pygame_loader.modules.pygame_mac_312.pygame.event.poll()
+    return pygame.event.poll()
 
 
 def get():
@@ -77,7 +77,7 @@ def get():
     get all events from the queue
     """
     _ft_init_check()
-    return cmu_graphics.libs.pygame_loader.modules.pygame_mac_312.pygame.event.get()
+    return pygame.event.get()
 
 
 def post(event: Event):
@@ -85,4 +85,4 @@ def post(event: Event):
     place an event on the queue
     """
     _ft_init_check()
-    cmu_graphics.libs.pygame_loader.modules.pygame_mac_312.pygame.event.post(event)
+    pygame.event.post(event)

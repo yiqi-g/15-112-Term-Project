@@ -71,7 +71,7 @@ The following strings can be converted into cursor bitmaps with
    * ``pygame.cursor.textmarker_strings``
 """
 
-import cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame as pygame
+import pygame
 
 _cursor_id_table = {
     pygame.SYSTEM_CURSOR_ARROW: "SYSTEM_CURSOR_ARROW",

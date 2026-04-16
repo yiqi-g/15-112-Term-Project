@@ -1,8 +1,8 @@
 from typing import Any, List, Optional, Sequence, Tuple, Union, overload
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_311.pygame.bufferproxy import BufferProxy
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_311.pygame.color import Color
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_311.pygame.rect import Rect
+from pygame.bufferproxy import BufferProxy
+from pygame.color import Color
+from pygame.rect import Rect
 
 from ._common import ColorValue, Coordinate, Literal, RectValue, RGBAOutput
 

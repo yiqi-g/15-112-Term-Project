@@ -10,7 +10,7 @@ from typing import (
     overload,
 )
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.typing import Point, RectLike, SequenceLike
+from pygame.typing import Point, RectLike, SequenceLike
 from typing_extensions import deprecated  # added in 3.13
 
 if sys.version_info >= (3, 11):

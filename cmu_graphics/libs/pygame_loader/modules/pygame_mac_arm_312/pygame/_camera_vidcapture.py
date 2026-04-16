@@ -5,7 +5,7 @@ http://videocapture.sourceforge.net/
 Binary windows wheels:
   https://www.lfd.uci.edu/~gohlke/pythonlibs/#videocapture
 """
-import cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_312.pygame as pygame
+import pygame
 
 
 def list_cameras():
@@ -99,8 +99,8 @@ class Camera:
         abuffer, width, height = self.get_buffer()
         if not abuffer:
             return None
-        surf = cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_312.pygame.image.frombuffer(abuffer, (width, height), "BGR")
-        surf = cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_312.pygame.transform.flip(surf, 0, 1)
+        surf = pygame.image.frombuffer(abuffer, (width, height), "BGR")
+        surf = pygame.transform.flip(surf, 0, 1)
         # if there is a destination surface given, we blit onto that.
         if dest_surf:
             dest_surf.blit(surf, (0, 0))

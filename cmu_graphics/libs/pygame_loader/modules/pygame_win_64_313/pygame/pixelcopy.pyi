@@ -1,6 +1,6 @@
 import numpy
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_313.pygame.surface import Surface
+from pygame.surface import Surface
 
 from ._common import Literal
 

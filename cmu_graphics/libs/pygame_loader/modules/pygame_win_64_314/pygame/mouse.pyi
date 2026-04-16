@@ -70,9 +70,9 @@ scroll, such as ``which`` (it will tell you what exact mouse device trigger the 
 
 from typing import Any, Literal, overload
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.cursors import Cursor
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.surface import Surface
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.typing import IntPoint, Point, SequenceLike
+from pygame.cursors import Cursor
+from pygame.surface import Surface
+from pygame.typing import IntPoint, Point, SequenceLike
 from typing_extensions import deprecated  # added in 3.13
 
 @overload

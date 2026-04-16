@@ -25,13 +25,13 @@ New in pygame 1.9.0.
 import atexit
 import math
 
-import cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame as pygame
-import cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.locals
+import pygame
+import pygame.locals
 import pygame.pypm as _pypm
 
 # For backward compatibility.
-MIDIIN = cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.locals.MIDIIN
-MIDIOUT = cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.locals.MIDIOUT
+MIDIIN = pygame.locals.MIDIIN
+MIDIOUT = pygame.locals.MIDIOUT
 
 __all__ = [
     "Input",

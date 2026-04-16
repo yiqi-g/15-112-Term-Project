@@ -1,7 +1,7 @@
 from typing import Sequence, Tuple, Union, overload
 from typing_extensions import Literal
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_313.pygame.cursors import Cursor
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_313.pygame.surface import Surface
+from pygame.cursors import Cursor
+from pygame.surface import Surface
 
 @overload
 def get_pressed(num_buttons: Literal[3] = 3) -> Tuple[bool, bool, bool]: ...

@@ -2,7 +2,7 @@ import sys
 from collections.abc import Collection, Iterator
 from typing import Any, ClassVar, SupportsIndex, Union, overload
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.typing import ColorLike
+from pygame.typing import ColorLike
 from typing_extensions import deprecated  # added in 3.13
 
 THECOLORS: dict[str, tuple[int, int, int, int]]

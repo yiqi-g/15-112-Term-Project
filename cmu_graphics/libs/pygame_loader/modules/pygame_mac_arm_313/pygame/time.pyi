@@ -1,6 +1,6 @@
 from typing import Union, final
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_313.pygame.event import Event
+from pygame.event import Event
 
 def get_ticks() -> int: ...
 def wait(milliseconds: int) -> int: ...

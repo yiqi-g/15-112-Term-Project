@@ -1,8 +1,8 @@
 from collections.abc import Callable
 from typing import Protocol, Union, overload
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame import FRect, Rect
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.typing import Point, RectLike, SequenceLike
+from pygame import FRect, Rect
+from pygame.typing import Point, RectLike, SequenceLike
 
 class _HasCircleAttribute(Protocol):
     # An object that has a circle attribute that is either a circle, or a function

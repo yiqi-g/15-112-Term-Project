@@ -1,7 +1,7 @@
 from typing import Optional, Sequence
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_311.pygame.rect import Rect
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_311.pygame.surface import Surface
+from pygame.rect import Rect
+from pygame.surface import Surface
 
 from ._common import ColorValue, Coordinate, RectValue
 

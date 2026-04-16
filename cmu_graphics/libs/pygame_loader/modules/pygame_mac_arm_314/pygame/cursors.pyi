@@ -1,8 +1,8 @@
 from collections.abc import Iterator
 from typing import Any, Literal, Union, overload
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.surface import Surface
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.typing import FileLike, IntPoint, SequenceLike
+from pygame.surface import Surface
+from pygame.typing import FileLike, IntPoint, SequenceLike
 
 _Small_string = tuple[
     str, str, str, str, str, str, str, str, str, str, str, str, str, str, str, str

@@ -111,16 +111,16 @@ class MissingModule:
 # mixing single phase (C) and multiphase modules (cython)
 if sys.platform in ("wasi", "emscripten"):
     try:
-        import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.base as pygame_static
+        import pygame.base as pygame_static
     except ModuleNotFoundError:
         pygame_static = None
 
     if pygame_static:
-        src.cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame = sys.modules[__name__]
+        pygame = sys.modules[__name__]
 
         # cython modules use multiphase initialisation when not in builtin Inittab.
 
-        from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame import _sdl2
+        from pygame import _sdl2
 
         import importlib.machinery
 
@@ -136,76 +136,76 @@ if sys.platform in ("wasi", "emscripten"):
 # isort: skip_file
 
 # first, the "required" modules
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.base import *  # pylint: disable=wildcard-import; lgtm[py/polluting-import]
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.constants import *  # now has __all__ pylint: disable=wildcard-import; lgtm[py/polluting-import]
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.version import *  # pylint: disable=wildcard-import; lgtm[py/polluting-import]
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.rwobject import encode_string, encode_file_path
+from pygame.base import *  # pylint: disable=wildcard-import; lgtm[py/polluting-import]
+from pygame.constants import *  # now has __all__ pylint: disable=wildcard-import; lgtm[py/polluting-import]
+from pygame.version import *  # pylint: disable=wildcard-import; lgtm[py/polluting-import]
+from pygame.rwobject import encode_string, encode_file_path
 
 
-import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.rect
+import pygame.rect
 
-Rect = src.cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.rect.Rect
-FRect = src.cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.rect.FRect
-
-
-import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.color
-
-Color = cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.color.Color
-
-import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.bufferproxy
-
-BufferProxy = cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.bufferproxy.BufferProxy
-
-import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.math
-
-Vector2 = cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.math.Vector2
-Vector3 = cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.math.Vector3
+Rect = pygame.rect.Rect
+FRect = pygame.rect.FRect
 
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.base import __version__
+import pygame.color
+
+Color = pygame.color.Color
+
+import pygame.bufferproxy
+
+BufferProxy = pygame.bufferproxy.BufferProxy
+
+import pygame.math
+
+Vector2 = pygame.math.Vector2
+Vector3 = pygame.math.Vector3
+
+
+from pygame.base import __version__
 
 # next, the "standard" modules
 # we still allow them to be missing for stripped down pygame distributions
 try:
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.display
+    import pygame.display
 except (ImportError, OSError):
     display = MissingModule("display", urgent=1)
 
 try:
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.draw
+    import pygame.draw
 except (ImportError, OSError):
     draw = MissingModule("draw", urgent=1)
 
 try:
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.event
-    from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.event import Event
+    import pygame.event
+    from pygame.event import Event
 except (ImportError, OSError):
     event = MissingModule("event", urgent=1)
 
 try:
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.image
+    import pygame.image
 except (ImportError, OSError):
     image = MissingModule("image", urgent=1)
 
 try:
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.joystick
-    from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.joystick import Joystick
+    import pygame.joystick
+    from pygame.joystick import Joystick
 except (ImportError, OSError):
     joystick = MissingModule("joystick", urgent=1)
 
 try:
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.key
+    import pygame.key
 except (ImportError, OSError):
     key = MissingModule("key", urgent=1)
 
 try:
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.mouse
+    import pygame.mouse
 except (ImportError, OSError):
     mouse = MissingModule("mouse", urgent=1)
 
 try:
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.cursors
-    from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.cursors import Cursor
+    import pygame.cursors
+    from pygame.cursors import Cursor
 except (ImportError, OSError):
     cursors = MissingModule("cursors", urgent=1)
 
@@ -214,14 +214,14 @@ except (ImportError, OSError):
 
 
 try:
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.pixelcopy
+    import pygame.pixelcopy
 except (ImportError, OSError):
     pixelcopy = MissingModule("pixelcopy", urgent=1)
 
 
 try:
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.surflock
-    from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.surface import Surface, SurfaceType
+    import pygame.surflock
+    from pygame.surface import Surface, SurfaceType
 except (ImportError, OSError):
 
     def Surface(size, flags, depth, masks):  # pylint: disable=unused-argument
@@ -231,14 +231,14 @@ except (ImportError, OSError):
 
 # sprite.py is using pygame.surface.Surface type
 try:
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.sprite
+    import pygame.sprite
 except (ImportError, OSError):
     sprite = MissingModule("sprite", urgent=1)
 
 
 try:
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.mask
-    from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.mask import Mask
+    import pygame.mask
+    from pygame.mask import Mask
 except (ImportError, OSError):
     mask = MissingModule("mask", urgent=0)
 
@@ -247,7 +247,7 @@ except (ImportError, OSError):
 
 
 try:
-    from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.pixelarray import PixelArray
+    from pygame.pixelarray import PixelArray
 except (ImportError, OSError):
 
     def PixelArray(surface):  # pylint: disable=unused-argument
@@ -255,39 +255,39 @@ except (ImportError, OSError):
 
 
 try:
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.time
-    from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.time import Clock
+    import pygame.time
+    from pygame.time import Clock
 except (ImportError, OSError):
     time = MissingModule("time", urgent=1)
 
 try:
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.transform
+    import pygame.transform
 except (ImportError, OSError):
     transform = MissingModule("transform", urgent=1)
 
 # lastly, the "optional" pygame modules
 if "PYGAME_FREETYPE" in os.environ:
     try:
-        import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.ftfont as font
+        import pygame.ftfont as font
 
         sys.modules["pygame.font"] = font
     except (ImportError, OSError):
         pass
 try:
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.font
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.sysfont
+    import pygame.font
+    import pygame.sysfont
 
-    from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.font import Font
+    from pygame.font import Font
 
-    cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.font.SysFont = cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.sysfont.SysFont
-    cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.font.get_fonts = cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.sysfont.get_fonts
-    cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.font.match_font = cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.sysfont.match_font
+    pygame.font.SysFont = pygame.sysfont.SysFont
+    pygame.font.get_fonts = pygame.sysfont.get_fonts
+    pygame.font.match_font = pygame.sysfont.match_font
 except (ImportError, OSError):
     font = MissingModule("font", urgent=0)
 
 # try to load pygame.mixer_music before mixer, for py2app...
 try:
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.mixer_music
+    import pygame.mixer_music
 
     # del pygame.mixer_music
     # print("NOTE2: failed importing pygame.mixer_music in lib/__init__.py")
@@ -295,14 +295,14 @@ except (ImportError, OSError):
     pass
 
 try:
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.mixer
-    from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.mixer import Sound
-    from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.mixer import Channel
+    import pygame.mixer
+    from pygame.mixer import Sound
+    from pygame.mixer import Channel
 except (ImportError, OSError):
     mixer = MissingModule("mixer", urgent=0)
 
 try:
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.scrap
+    import pygame.scrap
 except (ImportError, OSError):
     scrap = MissingModule("scrap", urgent=0)
 
@@ -339,7 +339,7 @@ try:
         # Always fails here. Need the error message for MissingModule.reason
         import numpy  # pylint: disable=ungrouped-imports
     # Check that module dependencies are not missing, or get error message
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.pixelcopy  # pylint: disable=ungrouped-imports
+    import pygame.pixelcopy  # pylint: disable=ungrouped-imports
 except (ImportError, OSError):
     surfarray = MissingModule("surfarray", urgent=0)
 else:
@@ -350,7 +350,7 @@ try:
         # Always fails here. Need the error message for MissingModule.reason
         import numpy  # pylint: disable=ungrouped-imports
     # Check that module dependencies are not missing, or get error message
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.mixer  # pylint: disable=ungrouped-imports
+    import pygame.mixer  # pylint: disable=ungrouped-imports
 except (ImportError, OSError):
     sndarray = MissingModule("sndarray", urgent=0)
 else:
@@ -359,14 +359,14 @@ else:
 del LazyLoader, find_spec, lazy_import, module_from_spec, numpy_missing
 
 try:
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame._debug
-    from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame._debug import print_debug_info
+    import pygame._debug
+    from pygame._debug import print_debug_info
 except (ImportError, OSError):
     debug = MissingModule("_debug", urgent=0)
 
 try:
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.system
-    from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame._data_classes import PowerState as power_state
+    import pygame.system
+    from pygame._data_classes import PowerState as power_state
 
     power_state.__module__ = "pygame.system"
     del power_state
@@ -374,7 +374,7 @@ except (ImportError, OSError):
     system = MissingModule("system", urgent=0)
 
 try:
-    from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.window import Window
+    from pygame.window import Window
 except (ImportError, OSError):
 
     def Window(title="pygame window", size=(640, 480), position=None, **kwargs):  # pylint: disable=unused-argument
@@ -382,7 +382,7 @@ except (ImportError, OSError):
 
 
 try:
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.typing
+    import pygame.typing
 except (ImportError, OSError):
     typing = MissingModule("typing", urgent=0)
 
@@ -400,7 +400,7 @@ except (ImportError, OSError):
 # this internal module needs to be included for dependency
 # finders, but can't be deleted, as some tests need it
 try:
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.pkgdata
+    import pygame.pkgdata
 
 except (ImportError, OSError):
     pass
@@ -415,12 +415,12 @@ def packager_imports():
     import atexit
     import numpy
     import OpenGL.GL
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.macosx
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.colordict
+    import pygame.macosx
+    import pygame.colordict
 
     # lazy imports
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.surfarray
-    import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.sndarray
+    import pygame.surfarray
+    import pygame.sndarray
 
 
 # make Rects pickleable
@@ -471,4 +471,4 @@ if "PYGAME_HIDE_SUPPORT_PROMPT" not in os.environ:
     del python_version, sysconfig
 
 # cleanup namespace
-del cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame, os, sys, platform, MissingModule, copyreg, packager_imports
+del pygame, os, sys, platform, MissingModule, copyreg, packager_imports

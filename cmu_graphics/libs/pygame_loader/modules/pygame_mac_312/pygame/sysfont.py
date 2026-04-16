@@ -24,7 +24,7 @@ import sys
 import warnings
 from os.path import basename, dirname, exists, join, splitext
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_312.pygame.font import Font
+from pygame.font import Font
 
 if sys.platform != "emscripten":
     if os.name == "nt":

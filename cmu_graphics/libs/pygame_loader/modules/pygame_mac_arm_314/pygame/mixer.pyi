@@ -1,8 +1,8 @@
 import sys
 from typing import Any, Optional, Union, overload
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.event import Event
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.typing import FileLike
+from pygame.event import Event
+from pygame.typing import FileLike
 from typing_extensions import (
     Buffer,  # collections.abc 3.12
     Self,

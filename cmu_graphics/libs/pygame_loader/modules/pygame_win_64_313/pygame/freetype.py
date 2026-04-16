@@ -19,7 +19,7 @@ from pygame._freetype import (
     get_version,
     set_default_resolution,
 )
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_313.pygame.sysfont import match_font, get_fonts, SysFont as _SysFont
+from pygame.sysfont import match_font, get_fonts, SysFont as _SysFont
 
 __all__ = [
     "Font",

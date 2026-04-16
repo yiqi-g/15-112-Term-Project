@@ -17,8 +17,8 @@ from collections.abc import Callable
 from os import PathLike as _PathProtocol
 from typing import IO, Protocol, TypeVar, Union
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.color import Color
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.rect import FRect, Rect
+from pygame.color import Color
+from pygame.rect import FRect, Rect
 
 # For functions that take a file name
 _PathLike = Union[str, bytes, _PathProtocol[str], _PathProtocol[bytes]]

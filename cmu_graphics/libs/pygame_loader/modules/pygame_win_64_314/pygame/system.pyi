@@ -5,7 +5,7 @@
 
 from typing import Optional, TypedDict
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame._data_classes import PowerState
+from pygame._data_classes import PowerState
 
 class _InstructionSets(TypedDict):
     ALTIVEC: bool

@@ -1,6 +1,6 @@
 from typing import TypedDict, overload
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.typing import FileLike
+from pygame.typing import FileLike
 
 class _MusicMetadataDict(TypedDict):
     title: str

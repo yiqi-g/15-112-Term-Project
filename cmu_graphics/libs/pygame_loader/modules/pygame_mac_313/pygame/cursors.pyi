@@ -1,6 +1,6 @@
 from typing import Any, Iterator, Sequence, Tuple, Union, overload
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_313.pygame.surface import Surface
+from pygame.surface import Surface
 
 from ._common import FileArg, Literal
 

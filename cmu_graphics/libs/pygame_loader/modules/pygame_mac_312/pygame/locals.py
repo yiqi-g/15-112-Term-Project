@@ -22,9 +22,9 @@
 """Set of functions from pygame that are handy to have in
 the local namespace for your module"""
 
-import cmu_graphics.libs.pygame_loader.modules.pygame_mac_312.pygame as pygame
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_312.pygame.constants import *  # pylint: disable=wildcard-import; lgtm[py/polluting-import]
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_312.pygame.rect import Rect
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_312.pygame.color import Color
+import pygame
+from pygame.constants import *  # pylint: disable=wildcard-import; lgtm[py/polluting-import]
+from pygame.rect import Rect
+from pygame.color import Color
 
 __all__ = pygame.constants.__all__ + ["Rect", "Color"]

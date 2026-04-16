@@ -1,6 +1,6 @@
 from typing import List, Sequence, Tuple, Union
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_313.pygame.event import Event
+from pygame.event import Event
 
 MIDIIN: int
 MIDIOUT: int

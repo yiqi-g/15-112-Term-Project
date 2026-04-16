@@ -1,8 +1,8 @@
 from collections.abc import Iterable
 from typing import Union
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.event import Event
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.typing import SequenceLike
+from pygame.event import Event
+from pygame.typing import SequenceLike
 
 MIDIIN: int
 MIDIOUT: int

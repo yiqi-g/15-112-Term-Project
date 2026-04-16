@@ -1,6 +1,8 @@
 import os, sys #main os driver
 from PIL import Image #this is the pillow module for image recognition
 import math
+import tkinter as tk
+from tkinter import filedialog
 
 # this dictionary is written by claude
 CHAR_SETS = {
@@ -14,6 +16,8 @@ CHAR_SETS = {
     'MATH':       '∑∫≈±×÷=+- ',
     'SYMBOLS':    '#@&$%!?;:,. ',
 }
+
+class Pixel:
 
 def convert(charSets, pixel, inverse = False):
     charsKey = 'STANDARD' #place holder for dropdown menu
@@ -30,10 +34,12 @@ def convert(charSets, pixel, inverse = False):
 
 def getNewImage(charSets, image):
     rows, cols = #get image rows, #get image cols
+    res = [ [ '' for _ in range(cols)] for _ in range(rows)]
     for row in rows:
         for col in cols:
-            pixelColor = #get pixel color
+            currPixel = # get image pixel value
             newPixel = convert(charSets, pixel)
-            pass
-    
+            res[row][col] = newPixel
+    return res
+
     

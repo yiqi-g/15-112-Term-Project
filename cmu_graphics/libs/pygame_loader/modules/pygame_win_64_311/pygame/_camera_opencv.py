@@ -9,7 +9,7 @@ import numpy
 import cv2
 import time
 
-import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_311.pygame as pygame
+import pygame
 
 
 def list_cameras():

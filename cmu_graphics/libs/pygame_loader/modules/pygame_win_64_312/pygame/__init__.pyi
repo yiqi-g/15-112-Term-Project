@@ -5,13 +5,42 @@
 
 from typing import Tuple, NoReturn
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_312.pygame import base as base, bufferproxy as bufferproxy, color as color, colordict as colordict, cursors as cursors, display as display, draw as draw, event as event, fastevent as fastevent, font as font, image as image, joystick as joystick, key as key, mask as mask, math as math, mixer as mixer, mixer_music as mixer_music, mouse as mouse, pixelarray as pixelarray, pixelcopy as pixelcopy, rect as rect, rwobject as rwobject, scrap as scrap, sndarray as sndarray, sprite as sprite, surface as surface, surfarray as surfarray, surflock as surflock, sysfont as sysfont, time as time, transform as transform
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_312.pygame import version as version
-
 def Overlay(format: int, size: Tuple[int, int]) -> NoReturn: ...
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_312.pygame import (
+from pygame import (
+    display as display,
+    draw as draw,
+    event as event,
+    font as font,
+    image as image,
+    key as key,
+    mixer as mixer,
+    mouse as mouse,
+    time as time,
+    cursors as cursors,
+    joystick as joystick,
+    math as math,
+    mask as mask,
+    pixelcopy as pixelcopy,
+    sndarray as sndarray,
+    sprite as sprite,
+    surfarray as surfarray,
+    transform as transform,
+    fastevent as fastevent,
+    scrap as scrap,
     threads as threads,
+    version as version,
+    base as base,
+    bufferproxy as bufferproxy,
+    color as color,
+    colordict as colordict,
+    mixer_music as mixer_music,
+    pixelarray as pixelarray,
+    rect as rect,
+    rwobject as rwobject,
+    surface as surface,
+    surflock as surflock,
+    sysfont as sysfont,
 )
 
 from .rect import Rect as Rect

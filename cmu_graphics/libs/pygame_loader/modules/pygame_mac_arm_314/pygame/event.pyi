@@ -1,6 +1,6 @@
 from typing import Any, ClassVar, Optional, Union, final
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.typing import SequenceLike
+from pygame.typing import SequenceLike
 from typing_extensions import deprecated  # added in 3.13
 
 class _GenericEvent:

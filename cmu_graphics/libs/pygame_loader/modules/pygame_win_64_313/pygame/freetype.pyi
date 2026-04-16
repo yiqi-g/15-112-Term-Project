@@ -1,8 +1,8 @@
 from typing import Any, Callable, Iterable, List, Optional, Tuple, Union
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_313.pygame.color import Color
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_313.pygame.rect import Rect
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_313.pygame.surface import Surface
+from pygame.color import Color
+from pygame.rect import Rect
+from pygame.surface import Surface
 
 from ._common import ColorValue, FileArg, RectValue
 

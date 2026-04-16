@@ -30,9 +30,9 @@ object around the draw calls (see :func:`pygame.Surface.lock` and
 
 from typing import Union, overload
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.rect import Rect
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.surface import Surface
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.typing import ColorLike, Point, RectLike, SequenceLike
+from pygame.rect import Rect
+from pygame.surface import Surface
+from pygame.typing import ColorLike, Point, RectLike, SequenceLike
 
 def rect(
     surface: Surface,

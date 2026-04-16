@@ -22,10 +22,10 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import Self
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.mask import Mask
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.rect import FRect, Rect
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.surface import Surface
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.typing import Point, RectLike
+from pygame.mask import Mask
+from pygame.rect import FRect, Rect
+from pygame.surface import Surface
+from pygame.typing import Point, RectLike
 
 # Some sprite functions only need objects with certain attributes, not always a sprite
 class _HasRect(Protocol):

@@ -1,11 +1,11 @@
 import numpy
 
 # importing this way exports the functions in the typestubs
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.pixelcopy import (
+from pygame.pixelcopy import (
     array_to_surface as array_to_surface,
     surface_to_array as surface_to_array,
 )
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.surface import Surface
+from pygame.surface import Surface
 from typing_extensions import deprecated  # added in 3.13
 
 def array2d(surface: Surface) -> numpy.ndarray: ...

@@ -1,10 +1,10 @@
 from collections.abc import Iterable
 from typing import Any, Literal, Optional, Union, overload
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.bufferproxy import BufferProxy
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.color import Color
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.rect import FRect, Rect
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.typing import (
+from pygame.bufferproxy import BufferProxy
+from pygame.color import Color
+from pygame.rect import FRect, Rect
+from pygame.typing import (
     ColorLike,
     Point,
     RectLike,

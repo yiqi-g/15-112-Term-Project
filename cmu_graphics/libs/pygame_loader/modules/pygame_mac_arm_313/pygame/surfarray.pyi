@@ -2,10 +2,10 @@ from typing import Tuple
 
 import numpy
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_313.pygame.surface import Surface
+from pygame.surface import Surface
 
 # importing this way exports the functions in the typestubs
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_313.pygame.pixelcopy import (
+from pygame.pixelcopy import (
     array_to_surface as array_to_surface,
     surface_to_array as surface_to_array,
 )

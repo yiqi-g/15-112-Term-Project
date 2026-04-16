@@ -1,6 +1,6 @@
 from typing import Callable, Hashable, Iterable, List, Optional, Tuple, Union
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_311.pygame.surface import Surface
+from pygame.surface import Surface
 
 from ._common import ColorValue, FileArg, Literal
 

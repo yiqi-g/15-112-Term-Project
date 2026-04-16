@@ -38,7 +38,7 @@ blue.
 """
 
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_311.pygame.pixelcopy import (
+from pygame.pixelcopy import (
     array_to_surface,
     surface_to_array,
     map_array as pix_map_array,

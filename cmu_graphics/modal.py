@@ -1,8 +1,8 @@
 import math
 
 ### ZIPFILE VERSION ###
-import cmu_graphics.libs.cairo_loader as cairo
-import cmu_graphics.libs.pygame_loader as pygame
+import libs.cairo_loader as cairo
+import libs.pygame_loader as pygame
 
 ### END ZIPFILE VERSION ###
 

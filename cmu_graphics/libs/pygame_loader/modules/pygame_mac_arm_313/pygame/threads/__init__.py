@@ -77,14 +77,14 @@ def benchmark_workers(a_bench_func=None, the_data=None):
     # note, this will only work with pygame 1.8rc3+
     # replace the doit() and the_data with something that releases the GIL
 
-    import cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_313.pygame as pygame
-    import cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_313.pygame.transform
+    import pygame
+    import pygame.transform
     import time
 
     if not a_bench_func:
 
         def doit(x):
-            return cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_313.pygame.transform.scale(x, (544, 576))
+            return pygame.transform.scale(x, (544, 576))
 
     else:
         doit = a_bench_func

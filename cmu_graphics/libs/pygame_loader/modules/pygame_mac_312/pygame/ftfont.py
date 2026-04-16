@@ -14,8 +14,8 @@ __all__ = [
 from pygame._freetype import init, Font as _Font, get_default_resolution
 from pygame._freetype import quit, get_default_font, get_init as _get_init
 from pygame._freetype import _internal_mod_init
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_312.pygame.sysfont import match_font, get_fonts, SysFont as _SysFont
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_312.pygame import encode_file_path
+from pygame.sysfont import match_font, get_fonts, SysFont as _SysFont
+from pygame import encode_file_path
 
 
 class Font(_Font):

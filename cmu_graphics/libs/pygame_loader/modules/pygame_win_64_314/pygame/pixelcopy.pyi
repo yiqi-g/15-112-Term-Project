@@ -1,7 +1,7 @@
 from typing import Literal
 
 import numpy
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.surface import Surface
+from pygame.surface import Surface
 
 _kind = Literal["P", "p", "R", "r", "G", "g", "B", "b", "A", "a", "C", "c"]
 

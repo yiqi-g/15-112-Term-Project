@@ -1,7 +1,7 @@
 from typing import final
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.joystick import JoystickType
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.typing import ColorLike
+from pygame.joystick import JoystickType
+from pygame.typing import ColorLike
 
 def init() -> None: ...
 def get_init() -> bool: ...

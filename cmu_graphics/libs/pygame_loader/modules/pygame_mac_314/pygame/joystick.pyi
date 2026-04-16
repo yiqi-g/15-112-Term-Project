@@ -1,6 +1,6 @@
 from typing import final
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.typing import ColorLike
+from pygame.typing import ColorLike
 from typing_extensions import deprecated  # added in 3.13
 
 def init() -> None: ...

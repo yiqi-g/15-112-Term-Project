@@ -26,8 +26,8 @@ import sys
 import warnings
 from os.path import basename, dirname, exists, join, splitext
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame import __file__ as pygame_main_file
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.font import Font
+from pygame import __file__ as pygame_main_file
+from pygame.font import Font
 
 OpenType_extensions = frozenset((".ttf", ".ttc", ".otf"))
 Sysfonts = {}

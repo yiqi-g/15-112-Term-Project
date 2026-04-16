@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import Literal, Optional, Union
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.surface import Surface
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_314.pygame.typing import IntPoint
+from pygame.surface import Surface
+from pygame.typing import IntPoint
 
 def get_backends() -> list[str]: ...
 def init(backend: Optional[str] = None) -> None: ...

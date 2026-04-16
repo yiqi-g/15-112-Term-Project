@@ -88,10 +88,10 @@ import types
 from typing import Optional
 from warnings import warn
 
-import cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame as pygame
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.mask import from_surface
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.rect import Rect
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.time import get_ticks
+import pygame
+from pygame.mask import from_surface
+from pygame.rect import Rect
+from pygame.time import get_ticks
 
 
 class Sprite:

@@ -1,7 +1,7 @@
 from typing import Any, Generator, Iterable, Optional, Tuple, Union
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_312.pygame.rect import Rect
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_312.pygame.surface import Surface
+from pygame.rect import Rect
+from pygame.surface import Surface
 
 from .._common import RectValue, Literal, ColorValue
 

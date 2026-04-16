@@ -6,7 +6,7 @@ warnings.warn(
     stacklevel=2,
 )
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_314.pygame.sprite import (
+from pygame.sprite import (
     AbstractGroup,
     DirtySprite,
     Group,

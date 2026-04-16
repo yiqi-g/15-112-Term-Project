@@ -17,8 +17,8 @@ Instead, always begin with the original image and scale to the desired size.)
 
 from typing import Literal, Optional, Union
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.surface import Surface
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.typing import ColorLike, Point, RectLike, SequenceLike
+from pygame.surface import Surface
+from pygame.typing import ColorLike, Point, RectLike, SequenceLike
 
 def flip(surface: Surface, flip_x: bool, flip_y: bool) -> Surface:
     """Flip vertically and horizontally.

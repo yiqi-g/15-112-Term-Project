@@ -1,6 +1,6 @@
 from typing import List
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_311.pygame.event import Event
+from pygame.event import Event
 
 def init() -> None: ...
 def get_init() -> bool: ...

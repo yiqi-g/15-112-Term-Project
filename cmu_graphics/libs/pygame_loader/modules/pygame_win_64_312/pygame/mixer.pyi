@@ -2,7 +2,7 @@ from typing import Any, Dict, Optional, Tuple, Union, final, overload
 
 import numpy
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_312.pygame.event import Event
+from pygame.event import Event
 
 from . import mixer_music
 from ._common import FileArg

@@ -2,7 +2,7 @@ from typing import Tuple
 
 import numpy
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_313.pygame.mixer import Sound
+from pygame.mixer import Sound
 
 def array(sound: Sound) -> numpy.ndarray: ...
 def samples(sound: Sound) -> numpy.ndarray: ...

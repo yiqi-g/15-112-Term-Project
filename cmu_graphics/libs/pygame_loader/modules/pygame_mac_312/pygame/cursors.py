@@ -35,7 +35,7 @@ Alternately, you can also create Cursor objects using surfaces or cursors consta
 such as pygame.SYSTEM_CURSOR_ARROW.
 """
 
-import cmu_graphics.libs.pygame_loader.modules.pygame_mac_312.pygame as pygame
+import pygame
 
 _cursor_id_table = {
     pygame.SYSTEM_CURSOR_ARROW: "SYSTEM_CURSOR_ARROW",

@@ -1,7 +1,7 @@
 from typing import Union, Tuple, List, Optional, Dict, Sequence, overload
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_312.pygame.surface import Surface
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_312.pygame.constants import FULLSCREEN
+from pygame.surface import Surface
+from pygame.constants import FULLSCREEN
 from ._common import Coordinate, RectValue, ColorValue, RGBAOutput
 
 class _VidInfo:

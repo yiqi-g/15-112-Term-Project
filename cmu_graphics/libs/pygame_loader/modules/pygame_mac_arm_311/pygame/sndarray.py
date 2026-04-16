@@ -37,7 +37,7 @@ Sounds with 16-bit data will be treated as unsigned integers,
 if the sound sample type requests this.
 """
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_311.pygame import mixer
+from pygame import mixer
 import numpy
 
 import warnings

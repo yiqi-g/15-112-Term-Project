@@ -1,8 +1,8 @@
 from collections.abc import Callable, Hashable, Iterable
 from typing import Literal, Optional, Union
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.surface import Surface
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.typing import ColorLike, FileLike
+from pygame.surface import Surface
+from pygame.typing import ColorLike, FileLike
 from typing_extensions import deprecated  # added in 3.13
 
 # TODO: Figure out a way to type this attribute such that mypy knows it's not

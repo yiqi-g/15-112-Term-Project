@@ -1,6 +1,6 @@
 from typing import Any, Dict, Sequence, Tuple
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_312.pygame.surface import Surface
+from pygame.surface import Surface
 
 from ._common import ColorValue
 

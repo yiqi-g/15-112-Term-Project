@@ -1,9 +1,9 @@
 import sys
 from typing import Any, Union, overload
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.color import Color
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.surface import Surface
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_314.pygame.typing import SequenceLike
+from pygame.color import Color
+from pygame.surface import Surface
+from pygame.typing import SequenceLike
 
 # 'ellipsis' existed in typeshed pre 3.10, now we use EllipsisType which is
 # the modern standard library equivalent.

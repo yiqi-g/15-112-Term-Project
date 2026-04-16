@@ -88,11 +88,11 @@ Sprites are not thread safe, so lock them yourself if using threads.
 from weakref import WeakSet
 from warnings import warn
 
-import cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_311.pygame as pygame
+import pygame
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_311.pygame.rect import Rect
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_311.pygame.time import get_ticks
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_arm_311.pygame.mask import from_surface
+from pygame.rect import Rect
+from pygame.time import get_ticks
+from pygame.mask import from_surface
 
 
 class Sprite:

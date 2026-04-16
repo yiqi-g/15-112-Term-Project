@@ -1,7 +1,7 @@
 from typing import Literal, Optional, Sequence, Union
 
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_312.pygame.color import Color
-from cmu_graphics.libs.pygame_loader.modules.pygame_win_64_312.pygame.surface import Surface
+from pygame.color import Color
+from pygame.surface import Surface
 
 from ._common import ColorValue, Coordinate, RectValue
 

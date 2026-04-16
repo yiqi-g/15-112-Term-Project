@@ -26,7 +26,7 @@ pygame version without importing the main pygame module.
 The python version information should always compare greater than any previous
 releases. (hmm, until we get to versions > 10)
 """
-from cmu_graphics.libs.pygame_loader.modules.pygame_mac_313.pygame.base import get_sdl_version
+from pygame.base import get_sdl_version
 
 ###############
 # This file is generated with version.py.in
