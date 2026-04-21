@@ -1,6 +1,9 @@
 from converter import *
+from components import *
+from PIL import Image
 
 def onAppStart(app):
+    app.setMaxShapeCount(100000000000)
     app.font = 'monopspace'
     app.fontSize = 14
     app.fontColor = 'white'
@@ -11,15 +14,15 @@ def onAppStart(app):
     app.trialImage = 'CleanShot 2026-04-20 at 15.48.40@2x.png'
 
     app.images = []
-    app.uiElments = []
+    app.uiElements = []
     app.asciiArray = []
 
-    convertButton = UI_Button('convert', 150, 50, app.width / 2, app.height / 2 + 400, backgroundColor='black')
+    app.convertButton = UI_Button('convert', 150, 50, app.width / 2, app.height / 2 + 400, backgroundColor='black')
 
 def onMousePress(app, mouseX, mouseY):
     for element in app.uiElements:
         if isClicked(element, mouseX, mouseY):
-            element.onClick()
+            element.onClick(app)
 
 def onMouseDrag(app, mouseX, mouseY):
     pass

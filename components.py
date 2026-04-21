@@ -1,6 +1,5 @@
 from cmu_graphics import *
 from cmu_cpcs_utils import *
-from controller import *
 from converter import *
 import math
 
@@ -40,11 +39,11 @@ class UI_Button:
         self.fontColor = fontColor
         self.fontSize = fontSize
 
-        app.uiElments.append(self)
+        app.uiElements.append(self)
 
     def onClick(self, app):
         if self.action == 'CONVERT':
-            imageArray = getNewImage(app.trialImage)
+            imageArray = getNewImage(app, app.trialImage)
             
 
     def draw(self):

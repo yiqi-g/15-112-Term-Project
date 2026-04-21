@@ -1,10 +1,8 @@
 import os, sys #main os driver
 from PIL import Image #this is the pillow module for image recognition
 import math
-import tkinter as tk
-from tkinter import filedialog
-
-from PIL import Image
+# import tkinter as tk
+# from tkinter import filedialog
 
 image = Image.open("CleanShot 2026-04-20 at 15.48.40@2x.png")
 #open and turn grayscale
@@ -24,7 +22,7 @@ def convertToAscii(pixel, inverse = False):
         'SYMBOLS':    '#@&$%!?;:,. ',
     }
 
-    charsKey = 'STANDARD' #place holder for dropdown menu
+    charsKey = 'BLOCKS' #place holder for dropdown menu
     chars = list(CHAR_SETS[charsKey])
 
     charIndex = math.floor((pixel / 255) * (len(chars) - 1)) #get it's position in the ascii art in accordance to grayscale value
@@ -36,7 +34,9 @@ def convertToAscii(pixel, inverse = False):
     return currChar
 
 
-def getNewImage(image):
+def getNewImage(app, image):
+    image = Image.open(image)
+    image = image.resize((100, 100))
     image = image.convert('L')
     width, height = image.size
     app.asciiArray = [ [ '' for _ in range(width)] for _ in range(height)]
@@ -45,7 +45,7 @@ def getNewImage(image):
             currPixel = image.getpixel((col, row))
             app.asciiArray[row][col] = convertToAscii(currPixel)
 
-    img = Image.fromarray(res)
-    img.show()
-    img.save('output.png')
+    # img = Image.fromarray(app.asciiArray)
+    # img.show()
+    # img.save('output.png')
     print("done!")

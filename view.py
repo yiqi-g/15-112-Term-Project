@@ -7,7 +7,7 @@ import math
 def redrawAll(app):
     imageWidth, imageHeight = setImageSize(app, app.trialImage)
     drawImage(app.trialImage, app.width / 2, app.height / 2, width = imageWidth, height = imageHeight, align='center')
-    convertButton.draw()
+    app.convertButton.draw()
 
     if app.asciiArray != []:
         drawAsciiImage(app.asciiArray, imageWidth, imageHeight)
