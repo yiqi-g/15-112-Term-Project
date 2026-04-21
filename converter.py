@@ -37,12 +37,12 @@ def convert(charSets, pixel, inverse = False):
 
 
 def getNewImage(charSets, image):
-    image = Image.convert('L')
-    width, height = Image.size
+    image = image.convert('L')
+    width, height = image.size
     res = [ [ '' for _ in range(width)] for _ in range(height)]
     for row in range(height):
         for col in range(width):
-            currPixel = image.getpixel((row, col))
+            currPixel = image.getpixel((col, row))
             res[row][col] = convert(charSets, currPixel)
     return res
 
