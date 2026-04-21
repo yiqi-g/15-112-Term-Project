@@ -4,7 +4,7 @@ import math
 # import tkinter as tk
 # from tkinter import filedialog
 
-image = Image.open("CleanShot 2026-04-20 at 15.48.40@2x.png")
+image = Image.open("5da360c98b9af0ad709fe18606992229.jpg")
 #open and turn grayscale
 
 
@@ -22,7 +22,7 @@ def convertToAscii(pixel, inverse = False):
         'SYMBOLS':    '#@&$%!?;:,. ',
     }
 
-    charsKey = 'BLOCKS' #place holder for dropdown menu
+    charsKey = 'ALPHABETIC' #place holder for dropdown menu
     chars = list(CHAR_SETS[charsKey])
 
     charIndex = math.floor((pixel / 255) * (len(chars) - 1)) #get it's position in the ascii art in accordance to grayscale value
@@ -36,14 +36,18 @@ def convertToAscii(pixel, inverse = False):
 
 def getNewImage(app, image):
     image = Image.open(image)
-    image = image.resize((100, 100))
-    image = image.convert('L')
     width, height = image.size
-    app.asciiArray = [ [ '' for _ in range(width)] for _ in range(height)]
+    image = image.resize((width // 4, height // 4))
+    width, height = image.size
+    image = image.convert('L')
+    app.asciiArray = []
     for row in range(height):
+        rowList = []
         for col in range(width):
             currPixel = image.getpixel((col, row))
-            app.asciiArray[row][col] = convertToAscii(currPixel)
+            rowList.append(convertToAscii(currPixel) * 2)
+        app.asciiArray.append(rowList)
+
 
     # img = Image.fromarray(app.asciiArray)
     # img.show()

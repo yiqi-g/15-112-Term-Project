@@ -6,11 +6,15 @@ import math
 
 def redrawAll(app):
     imageWidth, imageHeight = setImageSize(app, app.trialImage)
-    drawImage(app.trialImage, app.width / 2, app.height / 2, width = imageWidth, height = imageHeight, align='center')
+    if app.asciiArray == []:
+        drawImage(app.trialImage, app.width / 2, app.height / 2, width = imageWidth, 
+                height = imageHeight, align='center')
+    else:
+        drawAsciiImage(app.asciiArray, imageWidth, imageHeight)
+        print(app.asciiArray[0])
     app.convertButton.draw()
 
-    if app.asciiArray != []:
-        drawAsciiImage(app.asciiArray, imageWidth, imageHeight)
+    print(len(app.asciiArray))
 
 def setImageSize(app, image):
     imageWidth, imageHeight = getImageSize(image)
@@ -31,11 +35,14 @@ def drawAsciiImage(asciiArray, imageWidth, imageHeight):
     rows, cols = len(asciiArray), len(asciiArray[0])
     startingX = app.width / 2 - imageWidth / 2
     startingY = app.height / 2 - imageHeight / 2
-
-    charWidth = app.fontSize / 2
+    charWidth = (app.fontSize / 2) * cols
     charHeight = app.fontSize
     for row in range(rows):
-        for col in range(cols):
-            drawLabel(asciiArray[row][col], startingX + col * charWidth, startingY + row * charHeight, font = app.font)
+        rowString = ''.join(asciiArray[row])
+        print(startingX, startingY)
+        drawLabel(rowString, startingX, 
+                    startingY + row * charHeight, 
+                    font = app.font, fill = 'white',
+                    size = app.fontSize)
         
             

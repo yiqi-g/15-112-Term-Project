@@ -5,13 +5,16 @@ from PIL import Image
 def onAppStart(app):
     app.setMaxShapeCount(100000000000)
     app.font = 'monopspace'
-    app.fontSize = 14
+    app.fontSize = 4
     app.fontColor = 'white'
     app.width = 1920
     app.height = 1080
     app.background = 'black'
 
-    app.trialImage = 'CleanShot 2026-04-20 at 15.48.40@2x.png'
+    app.charWidth = app.fontSize / 2
+    app.charHeight = app.fontSize
+
+    app.trialImage = '5da360c98b9af0ad709fe18606992229.jpg'
 
     app.images = []
     app.uiElements = []
