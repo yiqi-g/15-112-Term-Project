@@ -12,23 +12,33 @@ class UI_Slider:
         self.highest = highest
 
 class UI_Button:
-    def __init__(self, name, width, height, backgroundColor = 'black', border = None, textAlign = 'Center', font = app.font, fontSize = 16) -> None:
+    def __init__(self, name, width, height, x, y, backgroundColor = 'black', 
+                 border = None, textAlign = 'Center', font = None, fontSize = 16) -> None:
         self.name = name
         self.width = width
         self.height = height
+        self.x = x
+        self.y = y
+
+        #styling
+
         self.backgroundColor = backgroundColor
         self.border = border
         self.textAlign = textAlign
-        self.font = font
+        self.font = font if font else 'monospace'
         self.fontSize = fontSize
 
     def onClick(self):
-        
-class UI_Importer: 
+        pass
 
+    def drawButton(self):
+        pass
+
+class UI_Importer: 
+    pass
 
 class UI_DropDown(UI_Button):
-
+    pass
 
 class UI_Window:
     def __init__(self, width, height, backgroundColor) -> None:
