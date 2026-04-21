@@ -5,7 +5,6 @@ from components import *
 import math
 
 def redrawAll(app):
-    convertButton = UI_Button('convert', 150, 50, app.width / 2, app.height / 2 + 400, backgroundColor='black')
     imageWidth, imageHeight = setImageSize(app, app.trialImage)
     drawImage(app.trialImage, app.width / 2, app.height / 2, width = imageWidth, height = imageHeight, align='center')
     convertButton.draw()
@@ -22,3 +21,7 @@ def setImageSize(app, image):
             maxHeight = (imageHeight / imageWidth) * maxWidth
         return maxWidth, maxHeight
     return imageWidth, imageHeight
+
+
+def drawAsciiImage(listOfChars):
+    

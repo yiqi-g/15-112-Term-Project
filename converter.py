@@ -6,24 +6,24 @@ from tkinter import filedialog
 
 from PIL import Image
 
-# this dictionary is written by claude
-CHAR_SETS = {
-    'STANDARD':   '@#S%?*+;:,. ',
-    'BLOCKS':     '█▓▒░ ',
-    'BINARY':     '10 ',
-    'DETAILED':   '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\'"^`\'. ',
-    'MINIMAL':    '@: ',
-    'ALPHABETIC': 'WMBASTHINKCO ',
-    'NUMERIC':    '8642013 ',
-    'MATH':       '∑∫≈±×÷=+- ',
-    'SYMBOLS':    '#@&$%!?;:,. ',
-}
-
-image = Image.open("hopper.ppm")
+image = Image.open("CleanShot 2026-04-20 at 15.48.40@2x.png")
 #open and turn grayscale
 
 
-def convert(charSets, pixel, inverse = False):
+def convertToAscii(pixel, inverse = False):
+    # this dictionary is written by claude
+    CHAR_SETS = {
+        'STANDARD':   '@#S%?*+;:,. ',
+        'BLOCKS':     '█▓▒░ ',
+        'BINARY':     '10 ',
+        'DETAILED':   '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\'"^`\'. ',
+        'MINIMAL':    '@: ',
+        'ALPHABETIC': 'WMBASTHINKCO ',
+        'NUMERIC':    '8642013 ',
+        'MATH':       '∑∫≈±×÷=+- ',
+        'SYMBOLS':    '#@&$%!?;:,. ',
+    }
+
     charsKey = 'STANDARD' #place holder for dropdown menu
     chars = list(CHAR_SETS[charsKey])
 
@@ -36,14 +36,17 @@ def convert(charSets, pixel, inverse = False):
     return currChar
 
 
-def getNewImage(charSets, image):
+def getNewImage(image):
     image = image.convert('L')
     width, height = image.size
     res = [ [ '' for _ in range(width)] for _ in range(height)]
     for row in range(height):
         for col in range(width):
             currPixel = image.getpixel((col, row))
-            res[row][col] = convert(charSets, currPixel)
-    return res
+            res[row][col] = convertToAscii(currPixel)
 
-    
+    img = Image.fromarray(res)
+    img.show()
+    img.save('output.png')
+    print("done!")
+    return res
