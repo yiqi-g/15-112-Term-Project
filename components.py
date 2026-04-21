@@ -3,21 +3,28 @@ from cmu_cpcs_utils import *
 from controller import *
 import math
 
+
+#these properties are referenced from w3 school's css classes
 class UI_Slider:
     def __init__(self, name, lowest, highest) -> None:
         self.name = name
         self.lowest = lowest
         self.highest = highest
 
-
-
 class UI_Button:
-    def __init__(self, name, lowest, highest) -> None:
+    def __init__(self, name, width, height, backgroundColor = 'black', border = None, textAlign = 'Center', font = app.font, fontSize = 16) -> None:
         self.name = name
-        self.lowest = lowest
-        self.highest = highest
+        self.width = width
+        self.height = height
+        self.backgroundColor = backgroundColor
+        self.border = border
+        self.textAlign = textAlign
+        self.font = font
+        self.fontSize = fontSize
 
-class UI_Importer:
+    def onClick(self):
+        
+class UI_Importer: 
 
 
 class UI_DropDown(UI_Button):
