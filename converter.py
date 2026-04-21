@@ -4,6 +4,8 @@ import math
 import tkinter as tk
 from tkinter import filedialog
 
+from PIL import Image
+
 # this dictionary is written by claude
 CHAR_SETS = {
     'STANDARD':   '@#S%?*+;:,. ',
@@ -17,11 +19,13 @@ CHAR_SETS = {
     'SYMBOLS':    '#@&$%!?;:,. ',
 }
 
-class Pixel:
+image = Image.open("hopper.ppm")
+#open and turn grayscale
+
 
 def convert(charSets, pixel, inverse = False):
     charsKey = 'STANDARD' #place holder for dropdown menu
-    chars = list(CHAR_SETS[charSetKey])
+    chars = list(CHAR_SETS[charsKey])
 
     charIndex = math.floor((pixel / 255) * (len(chars) - 1)) #get it's position in the ascii art in accordance to grayscale value
     inverseCharIndex = abs(len(chars) - charIndex)
@@ -33,13 +37,13 @@ def convert(charSets, pixel, inverse = False):
 
 
 def getNewImage(charSets, image):
-    rows, cols = #get image rows, #get image cols
-    res = [ [ '' for _ in range(cols)] for _ in range(rows)]
-    for row in rows:
-        for col in cols:
-            currPixel = # get image pixel value
-            newPixel = convert(charSets, pixel)
-            res[row][col] = newPixel
+    image = Image.convert('L')
+    width, height = Image.size
+    res = [ [ '' for _ in range(width)] for _ in range(height)]
+    for row in range(height):
+        for col in range(width):
+            currPixel = image.getpixel((row, col))
+            res[row][col] = convert(charSets, currPixel)
     return res
 
     
