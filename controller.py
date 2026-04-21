@@ -12,6 +12,7 @@ def onAppStart(app):
 
     app.images = []
     app.uiElments = []
+    app.asciiArray = []
 
     convertButton = UI_Button('convert', 150, 50, app.width / 2, app.height / 2 + 400, backgroundColor='black')
 

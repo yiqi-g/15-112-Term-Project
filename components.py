@@ -44,7 +44,7 @@ class UI_Button:
 
     def onClick(self, app):
         if self.action == 'CONVERT':
-            getNewImage(app.trialImage)
+            imageArray = getNewImage(app.trialImage)
             
 
     def draw(self):

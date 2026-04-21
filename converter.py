@@ -39,14 +39,13 @@ def convertToAscii(pixel, inverse = False):
 def getNewImage(image):
     image = image.convert('L')
     width, height = image.size
-    res = [ [ '' for _ in range(width)] for _ in range(height)]
+    app.asciiArray = [ [ '' for _ in range(width)] for _ in range(height)]
     for row in range(height):
         for col in range(width):
             currPixel = image.getpixel((col, row))
-            res[row][col] = convertToAscii(currPixel)
+            app.asciiArray[row][col] = convertToAscii(currPixel)
 
     img = Image.fromarray(res)
     img.show()
     img.save('output.png')
     print("done!")
-    return res

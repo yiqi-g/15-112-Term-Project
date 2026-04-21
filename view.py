@@ -9,6 +9,9 @@ def redrawAll(app):
     drawImage(app.trialImage, app.width / 2, app.height / 2, width = imageWidth, height = imageHeight, align='center')
     convertButton.draw()
 
+    if app.asciiArray != []:
+        drawAsciiImage(app.asciiArray, imageWidth, imageHeight)
+
 def setImageSize(app, image):
     imageWidth, imageHeight = getImageSize(image)
     isPortrait = imageHeight > imageWidth
@@ -23,5 +26,16 @@ def setImageSize(app, image):
     return imageWidth, imageHeight
 
 
-def drawAsciiImage(listOfChars):
-    
+# This function is written with the assistance of Claude, parts including charWidth and drawLabel parameters. Everything else is written by hand.
+def drawAsciiImage(asciiArray, imageWidth, imageHeight):
+    rows, cols = len(asciiArray), len(asciiArray[0])
+    startingX = app.width / 2 - imageWidth / 2
+    startingY = app.height / 2 - imageHeight / 2
+
+    charWidth = app.fontSize / 2
+    charHeight = app.fontSize
+    for row in range(rows):
+        for col in range(cols):
+            drawLabel(asciiArray[row][col], startingX + col * charWidth, startingY + row * charHeight, font = app.font)
+        
+            
