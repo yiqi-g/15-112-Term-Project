@@ -22,14 +22,15 @@ class UI_Button:
                  textAlign = 'Center', 
                  font = None, 
                  fontColor = 'white',
-                 fontSize = 16) -> None:
+                 fontSize = 16,)
         
-        self.action = action.upper()
+        # self.action = action.upper()
         self.width = width
         self.height = height
         self.x = x
         self.y = y
         self.opacity = opacity
+        self.action = action
         #styling
 
         self.backgroundColor = backgroundColor

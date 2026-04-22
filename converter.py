@@ -45,7 +45,8 @@ def getNewImage(app, image):
         rowList = []
         for col in range(width):
             currPixel = image.getpixel((col, row))
-            rowList.append(convertToAscii(currPixel) * 2)
+            rowList.append(convertToAscii(currPixel) * 2) 
+            #double it up, cuz character width is smaller than the height
         app.asciiArray.append(rowList)
 
 
