@@ -1,6 +1,6 @@
 from cmu_graphics import *
-from cmu_cpcs_utils import *
 from components import *
+from PIL import Image
 import math
 
 def onAppStart(app):
