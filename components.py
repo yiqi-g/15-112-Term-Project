@@ -23,14 +23,13 @@ class UI_Button:
                  font = None, 
                  fontColor = 'white',
                  fontSize = 16,):
-        
-        # self.action = action.upper()
         self.width = width
         self.height = height
         self.x = x
         self.y = y
         self.opacity = opacity
         self.action = action
+
         #styling
 
         self.backgroundColor = backgroundColor
@@ -43,16 +42,23 @@ class UI_Button:
         app.uiElements.append(self)
 
     def onClick(self, app):
-        if self.action == 'CONVERT':
+        if self.isClicked(self, mouseX, mouseY):
+            self.action()
             imageArray = getNewImage(app, app.trialImage)
+
+    def isClicked(self, mouseX, mouseY):
+        return ((self.x - self.width // 2 <= mouseX) and (mouseX <= self.x + self.width // 2)
+            and self.y - self.height // 2 <= mouseY) and (mouseY <= self.y + self.height // 2)
             
 
     def draw(self):
         drawRect(self.x, self.y, self.width, self.height, fill=self.backgroundColor, border = self.border, opacity = self.opacity, align = 'center')
         drawLabel(self.action, self.x, self.y, fill=self.fontColor, font = self.font, size = self.fontSize)
 
-class UI_Importer: 
+class UI_Importer(UI_Button): 
     pass
+    # def __init__(self):
+    #     super().__init__(self):
 
 class UI_DropDown(UI_Button):
     pass
