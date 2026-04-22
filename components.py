@@ -22,7 +22,7 @@ class UI_Button:
                  textAlign = 'Center', 
                  font = None, 
                  fontColor = 'white',
-                 fontSize = 16,)
+                 fontSize = 16,):
         
         # self.action = action.upper()
         self.width = width
