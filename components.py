@@ -13,22 +13,22 @@ class UI_Slider:
 
 class UI_Button:
     def __init__(self, 
-                 action, 
+                 name,
+                 onClickFn,
                  width, height, 
                  x, y, 
-                 opacity = 100,
-                 backgroundColor = 'black', 
+                 backgroundColor = 'white', 
                  border = None, 
                  textAlign = 'Center', 
                  font = None, 
-                 fontColor = 'white',
-                 fontSize = 16,):
+                 fontColor = 'black',
+                 fontSize = 16): 
+        self.name = name
         self.width = width
         self.height = height
         self.x = x
         self.y = y
-        self.opacity = opacity
-        self.action = action
+        self.onClickFn = onClickFn
 
         #styling
 
@@ -39,21 +39,15 @@ class UI_Button:
         self.fontColor = fontColor
         self.fontSize = fontSize
 
-        app.uiElements.append(self)
-
-    def onClick(self, app):
-        if self.isClicked(self, mouseX, mouseY):
-            self.action()
-            imageArray = getNewImage(app, app.trialImage)
-
-    def isClicked(self, mouseX, mouseY):
-        return ((self.x - self.width // 2 <= mouseX) and (mouseX <= self.x + self.width // 2)
-            and self.y - self.height // 2 <= mouseY) and (mouseY <= self.y + self.height // 2)
-            
+    def onClick(self, mouseX, mouseY):
+        if ((self.x - self.width // 2 <= mouseX) and (mouseX <= self.x + self.width // 2)
+            and self.y - self.height // 2 <= mouseY) and (mouseY <= self.y + self.height // 2):
+            self.onClickFn()
 
     def draw(self):
-        drawRect(self.x, self.y, self.width, self.height, fill=self.backgroundColor, border = self.border, opacity = self.opacity, align = 'center')
-        drawLabel(self.action, self.x, self.y, fill=self.fontColor, font = self.font, size = self.fontSize)
+        drawRect(self.x, self.y, self.width, self.height, fill=self.backgroundColor, 
+                 border = self.border, align = 'center')
+        drawLabel(self.name, self.x, self.y, fill=self.fontColor, font = self.font, size = self.fontSize)
 
 class UI_Importer(UI_Button): 
     pass

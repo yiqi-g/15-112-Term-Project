@@ -8,7 +8,7 @@ def onAppStart(app):
     app.font = 'monopspace'
     app.fontSize = 6
     app.fontColor = 'white'
-    app.background = 'black'
+    app.background = 'white'
 
     app.charWidth = app.fontSize / 2
     app.charHeight = app.fontSize
@@ -19,25 +19,24 @@ def onAppStart(app):
     app.uiElements = []
     app.asciiArray = []
 
-    app.convertButton = UI_Button('convert', 150, 50, app.width / 2, app.height / 2 + 400, backgroundColor='black')
+    initializeButtons(app)
+
+def initializeButtons(app):
+    
+    def convertButtonClick():
+        app.imageArray = getNewImage(app, app.trialImage)
+        
+    
+    convertButton = UI_Button('convert', 
+                              convertButtonClick, 150, 50, app.width / 2, app.height / 2 + 400, backgroundColor='white')
+    app.uiElements.append(convertButton)
 
 def onMousePress(app, mouseX, mouseY):
     for element in app.uiElements:
-        if isClicked(element, mouseX, mouseY):
-            element.onClick(app)
+        element.onClick(mouseX, mouseY)
 
 def onMouseDrag(app, mouseX, mouseY):
     pass
-
-def isClicked(element, mouseX, mouseY):
-    if isinstance(element, UI_Button):
-        return ((element.x - element.width // 2 <= mouseX) and (mouseX <= element.x + element.width // 2)
-            and element.y - element.height // 2 <= mouseY) and (mouseY <= element.y + element.height // 2)
-    elif isinstance(element, UI_Slider):
-        pass
-    elif isinstance(element, UI_Importer):
-        # open os and allow image upload
-        pass
 
 def redrawAll(app):
     imageWidth, imageHeight = setImageSize(app, app.trialImage)
@@ -46,10 +45,9 @@ def redrawAll(app):
                 height = imageHeight, align='center')
     else:
         drawAsciiImage(app.asciiArray, imageWidth, imageHeight)
-        print(app.asciiArray[0])
-    app.convertButton.draw()
-
-    print(len(app.asciiArray))
+    
+    for UI in app.uiElements:
+        UI.draw()
 
 def setImageSize(app, image):
     imageWidth, imageHeight = getImageSize(image)
@@ -74,10 +72,9 @@ def drawAsciiImage(asciiArray, imageWidth, imageHeight):
     charHeight = app.fontSize
     for row in range(rows):
         rowString = ''.join(asciiArray[row])
-        print(startingX, startingY)
         drawLabel(rowString, startingX, 
                     startingY + row * charHeight, 
-                    font = app.font, fill = 'white',
+                    font = app.font, fill = 'black',
                     size = app.fontSize)
         
             
