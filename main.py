@@ -7,6 +7,6 @@ from view import *
 
 
 def main():
-    runApp(runApp(width=1920, height=1080))
+    runApp(width=1020, height=800)
 
 main()

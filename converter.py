@@ -22,11 +22,11 @@ def convertToAscii(pixel, inverse = False):
         'SYMBOLS':    '#@&$%!?;:,. ',
     }
 
-    charsKey = 'ALPHABETIC' #place holder for dropdown menu
+    charsKey = 'DETAILED' #place holder for dropdown menu
     chars = list(CHAR_SETS[charsKey])
 
     charIndex = math.floor((pixel / 255) * (len(chars) - 1)) #get it's position in the ascii art in accordance to grayscale value
-    inverseCharIndex = abs(len(chars) - charIndex)
+    inverseCharIndex = len(chars) - 1 - charIndex #get the opposite
     if inverse:
         currChar = chars[inverseCharIndex]
     else:
@@ -34,7 +34,7 @@ def convertToAscii(pixel, inverse = False):
     return currChar
 
 
-def getNewImage(app, image):
+def getNewImage(app, image, inverse = False):
     image = Image.open(image)
     width, height = image.size
     image = image.resize((width // 4, height // 4))
@@ -45,7 +45,7 @@ def getNewImage(app, image):
         rowList = []
         for col in range(width):
             currPixel = image.getpixel((col, row))
-            rowList.append(convertToAscii(currPixel) * 2) 
+            rowList.append(convertToAscii(currPixel, inverse = inverse) * 2) 
             #double it up, cuz character width is smaller than the height
         app.asciiArray.append(rowList)
 

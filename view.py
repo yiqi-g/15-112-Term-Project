@@ -9,6 +9,8 @@ def onAppStart(app):
     app.fontSize = 6
     app.fontColor = 'white'
     app.background = 'white'
+    # app.width = 1920
+    # app.height = 1080
 
     app.charWidth = app.fontSize / 2
     app.charHeight = app.fontSize
@@ -24,7 +26,7 @@ def onAppStart(app):
 def initializeButtons(app):
     
     def convertButtonClick():
-        app.imageArray = getNewImage(app, app.trialImage)
+        app.imageArray = getNewImage(app, app.trialImage, inverse = True)
         
     
     convertButton = UI_Button('convert', 
@@ -76,5 +78,3 @@ def drawAsciiImage(asciiArray, imageWidth, imageHeight):
                     startingY + row * charHeight, 
                     font = app.font, fill = 'black',
                     size = app.fontSize)
-        
-            

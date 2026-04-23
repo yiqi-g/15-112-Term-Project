@@ -40,6 +40,7 @@ class UI_Button:
         self.fontSize = fontSize
 
     def onClick(self, mouseX, mouseY):
+        
         if ((self.x - self.width // 2 <= mouseX) and (mouseX <= self.x + self.width // 2)
             and self.y - self.height // 2 <= mouseY) and (mouseY <= self.y + self.height // 2):
             self.onClickFn()
