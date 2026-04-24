@@ -28,7 +28,7 @@ def convertToAscii(pixel, inverse = False, charsKey = 'STANDARD'):
         currChar = chars[charIndex]
     return currChar
 
-
+#debug help from Claude, I wrote most of the code. Claude helped with managing efficiency and maintaining the aspect ratio 
 def getNewImage(app, image, imageWidth, imageHeight, inverse = False):
     app.asciiArray = []
     image, DisplayImageWidth, DisplayImageHeight = modifyImage(app, image, imageWidth, imageHeight)
@@ -39,17 +39,11 @@ def getNewImage(app, image, imageWidth, imageHeight, inverse = False):
             rowList.append(convertToAscii(currPixel, inverse = inverse) * 2) 
             #double it up, cuz character width is smaller than the height
         app.asciiArray.append(rowList)
-        
-    # img = Image.fromarray(app.asciiArray)
-    # img.show()
-    # img.save('output.png')
-    print("done!")
 
-
+#debug help from Claude, Specifically, only target calls and target rows. 
 def modifyImage(app, image, imageWidth, imageHeight):
     targetCols = int(imageWidth // (app.charWidth * 2))
     targetRows = int(imageHeight // app.charHeight)
-    print(f'display: {imageWidth}x{imageHeight}, target: {targetCols}x{targetRows}, charWidth: {app.charWidth}, fontSize: {app.fontSize}')
     image = image.resize((targetCols, targetRows)).convert('L')
     imageWidth, imageHeight = image.size
     return image, imageWidth, imageHeight

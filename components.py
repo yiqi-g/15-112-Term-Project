@@ -62,9 +62,3 @@ class UI_sidebar (UI_Button):
         for button in app.uiElements:
             if isinstance(button, UI_Button):
                 button.draw()
-
-    
-class UI_Importer(UI_Button): 
-    pass
-    # def __init__(self):
-    #     super().__init__(self):

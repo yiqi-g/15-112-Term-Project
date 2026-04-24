@@ -4,6 +4,28 @@ from PIL import Image, ImageDraw, ImageFont
 import math
 import os
 
+'''
+Hello!
+
+This project is an image to ASCII converter. Start by pressing i and entering a specific image name from the three file options. Then press convert to convert the image into an ASCII version of it self. Finally, click Export to export the new ASCII version into a PNG. 
+
+Certain technical highlights are downsizing the original image to To improve efficiency, Doubling up each column of the ASCII 2D array to account for the character's width to a square value, And using OOP for the sidebar and buttons and passing in functions as values.
+
+The tech stack is Pillow and cmu_graphics. Pillow is an image recognition API. I use Claude mostly for debugging. There was no use of copy-pasting the code, Except for the export to PNG function on line 65. 
+
+Thank you!
+
+Functions to grade:
+- initializeButtons, Setting up the buttons and the sidebar and using OOP 
+- RedrawAll, Using screens and states
+- drawAsciiImage, Drawing A 2D list of labels And ensuring its correct size and aspect ratio
+
+- In converter.py:
+- GetNewImage, Iterating through the grayscale value of an image.
+- convertToAscii, Finding the approximate index based on the ratio of the pixel to its specific dictionary value.
+- modifyImage, Downsizing the image to ensure that the ASCII array isn't too large for efficiency purposes.
+'''
+
 
 def onAppStart(app):
     
@@ -12,7 +34,6 @@ def onAppStart(app):
     app.fontSize = 2
     app.fontColor = 'black'
     app.background = 'white'
-    app.charsKeys = ["STANDARD", "BLOCKS", "BINARY", "DETAILED", "MINIMAL", "ALPHABETIC", "NUMERIC", "MATH", "SYMBOLS"]
     app.sideBarWidth = 200
 
     app.charWidth = app.fontSize / 2
@@ -35,10 +56,11 @@ def syncImages(app, filePath: str):
     try:
         app.PILImage = Image.open(filePath)
         app.CMUImage = filePath
-    except Exception as e: # this is written by claude
+    except Exception as e: # this line is written by claude
         app.errorMessage = str(e) + ' please try again.'
 
 def initializeButtons(app):
+
     #This function is written by Claude
     def exportToPNG(outputPath=None):
         if app.asciiArray == []:
@@ -83,15 +105,11 @@ def initializeButtons(app):
         canvas.save(outputPath)
         app.exportMessage = f'Saved to {outputPath}'
 
+
     def convertButtonClick():
         imageWidth, imageHeight = setImageSize(app, app.CMUImage)
-        print(f'setImageSize returned: {imageWidth}x{imageHeight}')
-        # getNewImage(app, app.PILImage, imageWidth, imageHeight, inverse=False)
         app.imageArray = getNewImage(app, app.PILImage, imageWidth, imageHeight)
 
-    # importButton = UI_Button('import', 150, 50, 
-    #                         app.width / 2 - 200, app.height / 2 + 400, None,
-    #                         backgroundColor='white')
 
     convertButton = UI_Button('CONVERT', app.sideBarWidth - 50, 40, 
                           app.width - app.sideBarWidth // 2, app.height - 130, 
@@ -103,22 +121,13 @@ def initializeButtons(app):
     
     app.uiElements.append(convertButton)
     app.uiElements.append(exportButton)
-    # def updateButtons():
-    #     app.uiElements.append(convertButton)
 
-    #     if app.asciiArray != []:
-    #         app.uiElements.append(exportButton)
-    #     elif (app.asciiArray != []) and (exportButton in app.asciiArray):
-    #         app.uiElements.remove(exportButton)
-
-    # updateButtons()
 
 def image_onMousePress(app, mouseX, mouseY):
     for element in app.uiElements:
         element.onClick(mouseX, mouseY)
 
-
-
+#debug help from Claude, Specifically, resetting the error message back to an empty state 
 def start_onKeyPress(app, key):
     if key == 'i':
         filepath = app.getTextInput('Enter Box.png, Cat.jpg, or Landscape.jpeg' )
@@ -131,11 +140,6 @@ def start_onKeyPress(app, key):
         elif not isinstance(filepath, str):
             app.errorMessage = 'There was an error importing your image. Please Try Again.'
 
-def image_onKeyPress(app, key):
-    pass
-            
-# def onMouseDrag(app, mouseX, mouseY):
-#     pass
 
 def setImageSize(app, image):
     imageWidth, imageHeight = getImageSize(image)
@@ -151,14 +155,13 @@ def setImageSize(app, image):
     else:
         return imageWidth, imageHeight
 
-# This function is written with the assistance of Claude, parts including charWidth and drawLabel parameters. Everything else is written by hand.
+# charWidth and drawLabel parameters written with Claude, Everything else is written by hand.
 def drawAsciiImage(app, asciiArray, imageWidth, imageHeight):
     rows, cols = len(asciiArray), len(asciiArray[0])
     startingX = app.width // 2 - imageWidth // 2
     startingY = app.height // 2 - imageHeight // 2
     charWidth = (app.fontSize / 2) * cols
     charHeight = app.fontSize
-    print(f'startingX: {startingX}, imageWidth: {imageWidth}')
     for row in range(rows):
         rowString = ''.join(asciiArray[row])
         drawLabel(rowString, startingX, 
@@ -172,6 +175,7 @@ def start_redrawAll(app):
     else:
          drawLabel(app.errorMessage, app.width/2, app.height/2, font = app.font, fill = 'black',  size = 18)
 
+#debug help from claude, Specifically, replacing the original image with the ASCII version of it and the starting point of the ASCII 
 def image_redrawAll(app):
     if app.CMUImage is None:
         drawLabel('Loading...', app.width/2, app.height/2, size=18)
@@ -186,6 +190,7 @@ def image_redrawAll(app):
     
     if app.exportMessage != '':
         drawLabel(app.exportMessage, app.width/2, app.height - 30, fill='black', size=16, font = app.font)
+
 def main():
     runAppWithScreens(initialScreen='start', width=1600, height=1080)
 
