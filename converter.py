@@ -17,7 +17,7 @@ def convertToAscii(pixel, inverse = False):
         'SYMBOLS':    '#@&$%!?;:,. ',
     }
 
-    charsKey = 'BLOCKS' #place holder for dropdown menu
+    charsKey = 'NUMERIC' #place holder for dropdown menu
     chars = list(CHAR_SETS[charsKey])
 
     charIndex = math.floor((pixel / 255) * (len(chars) - 1)) #get it's position in the ascii art in accordance to grayscale value
@@ -30,16 +30,12 @@ def convertToAscii(pixel, inverse = False):
 
 
 def getNewImage(app, image, inverse = False):
-    shunkenSize = 4
-    imageWidth, imageHeight = app.PILImage.size
-    app.PILImage = app.PILImage.resize((imageWidth // shunkenSize, imageHeight // shunkenSize))
-    imageWidth, imageHeight = app.PILImage.size
-    image = image.convert('L')
     app.asciiArray = []
+    image, imageWidth, imageHeight = modifyImage(app, image)
     for row in range(imageHeight):
         rowList = []
         for col in range(imageWidth):
-            currPixel = app.PILImage.getpixel((col, row))
+            currPixel = image.getpixel((col, row))
             rowList.append(convertToAscii(currPixel, inverse = inverse) * 2) 
             #double it up, cuz character width is smaller than the height
         app.asciiArray.append(rowList)
@@ -48,3 +44,12 @@ def getNewImage(app, image, inverse = False):
     # img.show()
     # img.save('output.png')
     print("done!")
+
+
+def modifyImage(app, image):
+    shunkenSize = 4
+    imageWidth, imageHeight = app.PILImage.size
+    image = image.resize((imageWidth // shunkenSize, imageHeight // shunkenSize)).convert('L')
+    # image = image.convert('L')
+    imageWidth, imageHeight = image.size
+    return image, imageWidth, imageHeight

@@ -24,21 +24,21 @@ def onAppStart(app):
     initializeButtons(app)
     syncImages(app, '5da360c98b9af0ad709fe18606992229.jpg')
 
-def syncImages(app, imagePath: str):
-    app.PILImage = Image.open(imagePath)
-    app.CMUImage = imagePath
+def syncImages(app, filePath: str):
+    app.PILImage = Image.open(filePath)
+    app.CMUImage = filePath
 
 def initializeButtons(app):
     
     def convertButtonClick():
         app.imageArray = getNewImage(app, app.PILImage, inverse = False)
 
-    # importButton = UI_Button('import', importButtonClick, 150, 50, 
-    #                         app.width / 2 - 200, app.height / 2 + 400,
+    # importButton = UI_Button('import', 150, 50, 
+    #                         app.width / 2 - 200, app.height / 2 + 400, None,
     #                         backgroundColor='white')
 
     convertButton = UI_Button('convert', 
-                              convertButtonClick, 150, 50, app.width / 2, app.height / 2 + 400, backgroundColor='white')
+                              150, 50, app.width / 2, app.height / 2 + 400, convertButtonClick,backgroundColor='white')
     
     app.uiElements.extend([convertButton])
 
@@ -46,6 +46,13 @@ def onMousePress(app, mouseX, mouseY):
     for element in app.uiElements:
         element.onClick(mouseX, mouseY)
 
+def onKeyPress(app, key):
+    if key == 'i':
+        filepath = app.getTextInput('enter an image file path:' )
+        if isinstance(filepath, str):
+            syncImages(app, filepath)
+            app.asciiArray = []
+            
 def onMouseDrag(app, mouseX, mouseY):
     pass
 

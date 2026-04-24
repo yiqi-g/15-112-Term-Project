@@ -14,9 +14,9 @@ class UI_Slider:
 class UI_Button:
     def __init__(self, 
                  name,
-                 onClickFn,
                  width, height, 
                  x, y, 
+                 onClickFn = None,
                  backgroundColor = 'white', 
                  border = None, 
                  textAlign = 'Center', 
@@ -43,7 +43,8 @@ class UI_Button:
         
         if ((self.x - self.width // 2 <= mouseX) and (mouseX <= self.x + self.width // 2)
             and self.y - self.height // 2 <= mouseY) and (mouseY <= self.y + self.height // 2):
-            self.onClickFn()
+            if self.onClickFn != None:
+                self.onClickFn()
 
     def draw(self):
         drawRect(self.x, self.y, self.width, self.height, fill=self.backgroundColor, 
