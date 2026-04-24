@@ -1,11 +1,6 @@
 import os, sys #main os driver
 from PIL import Image #this is the pillow module for image recognition
 import math
-# import tkinter as tk
-# from tkinter import filedialog
-
-image = Image.open("5da360c98b9af0ad709fe18606992229.jpg")
-#open and turn grayscale
 
 
 def convertToAscii(pixel, inverse = False):
@@ -22,7 +17,7 @@ def convertToAscii(pixel, inverse = False):
         'SYMBOLS':    '#@&$%!?;:,. ',
     }
 
-    charsKey = 'DETAILED' #place holder for dropdown menu
+    charsKey = 'BLOCKS' #place holder for dropdown menu
     chars = list(CHAR_SETS[charsKey])
 
     charIndex = math.floor((pixel / 255) * (len(chars) - 1)) #get it's position in the ascii art in accordance to grayscale value
@@ -35,21 +30,20 @@ def convertToAscii(pixel, inverse = False):
 
 
 def getNewImage(app, image, inverse = False):
-    image = Image.open(image)
-    width, height = image.size
-    image = image.resize((width // 4, height // 4))
-    width, height = image.size
+    shunkenSize = 4
+    imageWidth, imageHeight = app.PILImage.size
+    app.PILImage = app.PILImage.resize((imageWidth // shunkenSize, imageHeight // shunkenSize))
+    imageWidth, imageHeight = app.PILImage.size
     image = image.convert('L')
     app.asciiArray = []
-    for row in range(height):
+    for row in range(imageHeight):
         rowList = []
-        for col in range(width):
-            currPixel = image.getpixel((col, row))
+        for col in range(imageWidth):
+            currPixel = app.PILImage.getpixel((col, row))
             rowList.append(convertToAscii(currPixel, inverse = inverse) * 2) 
             #double it up, cuz character width is smaller than the height
         app.asciiArray.append(rowList)
-
-
+        
     # img = Image.fromarray(app.asciiArray)
     # img.show()
     # img.save('output.png')
