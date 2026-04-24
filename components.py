@@ -5,12 +5,6 @@ import math
 
 
 #these properties are referenced from w3 school's css classes
-class UI_Slider:
-    def __init__(self, name, lowest, highest) -> None:
-        self.name = name
-        self.lowest = lowest
-        self.highest = highest
-
 class UI_Button:
     def __init__(self, 
                  name,
@@ -19,7 +13,9 @@ class UI_Button:
                  onClickFn = None,
                  backgroundColor = 'white', 
                  border = None, 
-                 textAlign = 'Center', 
+                 borderWidth = 1,
+                 opacity = 100,
+                 align = 'center', 
                  font = None, 
                  fontColor = 'black',
                  fontSize = 16): 
@@ -29,12 +25,14 @@ class UI_Button:
         self.x = x
         self.y = y
         self.onClickFn = onClickFn
+        self.opacity = opacity
 
         #styling
 
         self.backgroundColor = backgroundColor
         self.border = border
-        self.textAlign = textAlign
+        self.borderWidth = borderWidth
+        self.align = align
         self.font = font if font else 'monospace'
         self.fontColor = fontColor
         self.fontSize = fontSize
@@ -48,22 +46,25 @@ class UI_Button:
 
     def draw(self):
         drawRect(self.x, self.y, self.width, self.height, fill=self.backgroundColor, 
-                 border = self.border, align = 'center')
+                 border = self.border, borderWidth = self.borderWidth, align = 'center', opacity = self.opacity)
         drawLabel(self.name, self.x, self.y, fill=self.fontColor, font = self.font, size = self.fontSize)
 
+class UI_sidebar (UI_Button):
+    def __init__(self, name, width, height, x = 0, y = 0, onClickFn=None,
+                 backgroundColor='white', border=None, borderWidth = 1, opacity = 50, align='center',
+                 fontColor='black', fontSize=16):
+        super().__init__(name, width, height, x, y, onClickFn,
+                         backgroundColor, border, borderWidth, opacity, align, None,
+                         fontColor, fontSize)
+        
+    def draw(self, app):
+        drawRect(self.x, self.y, self.width, self.height, fill=self.backgroundColor, border = self.border,      borderWidth = self.borderWidth, opacity = self.opacity)
+        for button in app.uiElements:
+            if isinstance(button, UI_Button):
+                button.draw()
+
+    
 class UI_Importer(UI_Button): 
     pass
     # def __init__(self):
     #     super().__init__(self):
-
-class UI_DropDown(UI_Button):
-    pass
-
-class UI_Window:
-    def __init__(self, width, height, backgroundColor) -> None:
-        self. width = width
-        self.height = height
-        self.backgroundColor = backgroundColor
-
-    def __repr__(self):
-        return f'window size {self.width} x {self.height}, window color {self.backgroundColor}'

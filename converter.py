@@ -3,7 +3,7 @@ from PIL import Image, ImageDraw, ImageFont #this is the pillow module for image
 import math
 
 
-def convertToAscii(pixel, inverse = False):
+def convertToAscii(pixel, inverse = False, charsKey = 'STANDARD'):
     # this dictionary is written by claude
     CHAR_SETS = {
         'STANDARD':   '@#S%?*+;:,. ',
@@ -17,7 +17,7 @@ def convertToAscii(pixel, inverse = False):
         'SYMBOLS':    '#@&$%!?;:,. ',
     }
 
-    charsKey = 'NUMERIC' #place holder for dropdown menu
+    # charsKey = 'NUMERIC' #place holder for dropdown menu
     chars = list(CHAR_SETS[charsKey])
 
     charIndex = math.floor((pixel / 255) * (len(chars) - 1)) #get it's position in the ascii art in accordance to grayscale value
@@ -47,30 +47,9 @@ def getNewImage(app, image, imageWidth, imageHeight, inverse = False):
 
 
 def modifyImage(app, image, imageWidth, imageHeight):
-    targetCols = int(imageWidth // (app.charWidth* 2))
+    targetCols = int(imageWidth // (app.charWidth * 2))
     targetRows = int(imageHeight // app.charHeight)
     print(f'display: {imageWidth}x{imageHeight}, target: {targetCols}x{targetRows}, charWidth: {app.charWidth}, fontSize: {app.fontSize}')
-    ...
     image = image.resize((targetCols, targetRows)).convert('L')
     imageWidth, imageHeight = image.size
     return image, imageWidth, imageHeight
-
-#This function is written by Claude
-# def exportToPNG(app, outputPath='output.png'):
-#     rows, cols = len(app.asciiArray), len(app.asciiArray[0])
-    
-#     charWidth = app.fontSize
-#     charHeight = app.fontSize * 2
-    
-#     imgWidth = cols * charWidth
-#     imgHeight = rows * charHeight
-    
-#     canvas = Image.new('RGB', (imgWidth, imgHeight), color='white')
-#     draw = ImageDraw.Draw(canvas)
-    
-#     for row in range(rows):
-#         rowString = ''.join(app.asciiArray[row])
-#         draw.text((0, row * charHeight), rowString, fill='black')
-    
-#     canvas.save(outputPath)
-#     print(f'saved to {outputPath}')

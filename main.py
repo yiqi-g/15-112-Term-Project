@@ -2,6 +2,7 @@ from cmu_graphics import *
 from components import *
 from PIL import Image, ImageDraw, ImageFont
 import math
+import os
 
 
 def onAppStart(app):
@@ -11,6 +12,8 @@ def onAppStart(app):
     app.fontSize = 2
     app.fontColor = 'black'
     app.background = 'white'
+    app.charsKeys = ["STANDARD", "BLOCKS", "BINARY", "DETAILED", "MINIMAL", "ALPHABETIC", "NUMERIC", "MATH", "SYMBOLS"]
+    app.sideBarWidth = 200
 
     app.charWidth = app.fontSize / 2
     app.charHeight = app.fontSize
@@ -20,7 +23,8 @@ def onAppStart(app):
 
     app.uiElements = []
     app.asciiArray = []
-
+    app.sideBar = UI_sidebar('controls', 200, app.height, 
+                             app.width - 200, 0, backgroundColor= 'white', border= 'black',)
     initializeButtons(app)
     app.errorMessage = ''
     app.CMUImage = None
@@ -36,25 +40,48 @@ def syncImages(app, filePath: str):
 
 def initializeButtons(app):
     #This function is written by Claude
-    def exportToPNG(outputPath='output.png'):
-        if app.asciiArray != []:
-            rows, cols = len(app.asciiArray), len(app.asciiArray[0])
+    def exportToPNG(outputPath=None):
+        if app.asciiArray == []:
+            app.exportMessage = 'Convert an image first.'
+            return
         
-            charWidth = app.fontSize * 3 #CharWidth is always half of charHeight
-            charHeight = app.fontSize * 6
-            
-            imgWidth = cols * charWidth * 2
-            imgHeight = rows * charHeight
-            
-            canvas = Image.new('RGB', (imgWidth, imgHeight), color='white')
-            draw = ImageDraw.Draw(canvas)
+        # Resolve output path relative to this file, not the CWD
+        if outputPath is None:
+            scriptDir = os.path.dirname(os.path.abspath(__file__))
+            outputPath = os.path.join(scriptDir, 'output.png')
         
-            for row in range(rows):
-                rowString = ''.join(app.asciiArray[row])
-                draw.text((0, row * charHeight), rowString, fill='black')
-            
-            canvas.save(outputPath)
-            app.exportMessage = 'Saved to output.png!'
+        rows = len(app.asciiArray)
+        
+        # Load a real monospace font at a readable size for export
+        exportFontSize = 12
+        try:
+            font = ImageFont.truetype('Courier New.ttf', exportFontSize)
+        except OSError:
+            try:
+                font = ImageFont.truetype('Menlo.ttc', exportFontSize)
+            except OSError:
+                font = ImageFont.load_default()
+        
+        # Measure actual rendered width from a full row, not a single char
+        sampleRow = ''.join(app.asciiArray[0])
+        imgWidth = math.ceil(font.getlength(sampleRow))
+        
+        # Measure line height from chars with ascenders + descenders, round up
+        charBbox = font.getbbox('Mgjpq')
+        lineHeight = math.ceil((charBbox[3] - charBbox[1]) * 1.2)
+        
+        # Extra lineHeight of padding at the bottom as a safety buffer
+        imgHeight = rows * lineHeight + lineHeight
+        
+        canvas = Image.new('RGB', (imgWidth, imgHeight), color='white')
+        draw = ImageDraw.Draw(canvas)
+        
+        for row in range(rows):
+            rowString = ''.join(app.asciiArray[row])
+            draw.text((0, row * lineHeight), rowString, fill='black', font=font)
+        
+        canvas.save(outputPath)
+        app.exportMessage = f'Saved to {outputPath}'
 
     def convertButtonClick():
         imageWidth, imageHeight = setImageSize(app, app.CMUImage)
@@ -66,11 +93,14 @@ def initializeButtons(app):
     #                         app.width / 2 - 200, app.height / 2 + 400, None,
     #                         backgroundColor='white')
 
-    convertButton = UI_Button('convert', 
-                              150, 50, app.width / 2, app.height / 2 + 400, convertButtonClick,backgroundColor='white')
+    convertButton = UI_Button('CONVERT', app.sideBarWidth - 50, 40, 
+                          app.width - app.sideBarWidth // 2, app.height - 130, 
+                          convertButtonClick, backgroundColor='white', align = 'Left', fontColor='black', border='black', opacity= 50)
+
+    exportButton = UI_Button('EXPORT', app.sideBarWidth - 50, 40,
+                         app.width - (app.sideBarWidth// 2), app.height - 80,
+                         exportToPNG, backgroundColor='white', align = 'Left', fontColor='black', border='black', opacity = 50)
     
-    exportButton = UI_Button('export', 
-                              150, 50, app.width / 2 + 200, app.height / 2 + 400, exportToPNG,backgroundColor='white')
     app.uiElements.append(convertButton)
     app.uiElements.append(exportButton)
     # def updateButtons():
@@ -86,8 +116,6 @@ def initializeButtons(app):
 def image_onMousePress(app, mouseX, mouseY):
     for element in app.uiElements:
         element.onClick(mouseX, mouseY)
-    if app.CMUImage == None:
-        setActiveScreen('start')
 
 
 
@@ -143,11 +171,12 @@ def start_redrawAll(app):
         drawLabel('press i to enter an image file path: ', app.width/2, app.height/2, size = 18, font = app.font, fill = 'black')
     else:
          drawLabel(app.errorMessage, app.width/2, app.height/2, font = app.font, fill = 'black',  size = 18)
-    
 
 def image_redrawAll(app):
-    # if app.CMUImage == None:
-    #     return
+    if app.CMUImage is None:
+        drawLabel('Loading...', app.width/2, app.height/2, size=18)
+        return
+    app.sideBar.draw(app)
     imageWidth, imageHeight = setImageSize(app, app.CMUImage)
     if app.asciiArray == []:
         drawImage(app.CMUImage, app.width // 2, app.height // 2, width = imageWidth, 
@@ -155,16 +184,9 @@ def image_redrawAll(app):
     else:
         drawAsciiImage(app, app.asciiArray, imageWidth, imageHeight)
     
-    if app.exportMessage:
+    if app.exportMessage != '':
         drawLabel(app.exportMessage, app.width/2, app.height - 30, fill='black', size=16, font = app.font)
-
-    # if (app.asciiArray != []) and (exportButton in app.asciiArray):
-    #     app.uiElements.remove(exportButton)
-    
-    for UI in app.uiElements:
-        UI.draw()
-
 def main():
-    runAppWithScreens(initialScreen='start', width=1920, height=1080)
+    runAppWithScreens(initialScreen='start', width=1600, height=1080)
 
 main()
