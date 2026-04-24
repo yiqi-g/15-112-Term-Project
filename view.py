@@ -62,7 +62,7 @@ def redrawAll(app):
         drawImage(app.CMUImage, app.width // 2, app.height // 2, width = imageWidth, 
             height = imageHeight, align='center')
     else:
-        drawAsciiImage(app.asciiArray, imageWidth, imageHeight)
+        drawAsciiImage(app, app.asciiArray, imageWidth, imageHeight)
     
     for UI in app.uiElements:
         UI.draw()
@@ -82,7 +82,7 @@ def setImageSize(app, image):
         return imageWidth, imageHeight
 
 # This function is written with the assistance of Claude, parts including charWidth and drawLabel parameters. Everything else is written by hand.
-def drawAsciiImage(asciiArray, imageWidth, imageHeight):
+def drawAsciiImage(app, asciiArray, imageWidth, imageHeight):
     rows, cols = len(asciiArray), len(asciiArray[0])
     startingX = app.width // 2 - imageWidth // 2
     startingY = app.height // 2 - imageHeight // 2
@@ -94,3 +94,8 @@ def drawAsciiImage(asciiArray, imageWidth, imageHeight):
                     startingY + row * charHeight, 
                     font = app.font, fill = 'black',
                     size = app.fontSize, align = 'left')
+
+def main():
+    runApp(width=1280, height=720)
+
+main()
