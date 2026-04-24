@@ -1,5 +1,5 @@
 import os, sys #main os driver
-from PIL import Image #this is the pillow module for image recognition
+from PIL import Image, ImageDraw, ImageFont #this is the pillow module for image recognition
 import math
 
 
@@ -29,12 +29,12 @@ def convertToAscii(pixel, inverse = False):
     return currChar
 
 
-def getNewImage(app, image, inverse = False):
+def getNewImage(app, image, imageWidth, imageHeight, inverse = False):
     app.asciiArray = []
-    image, imageWidth, imageHeight = modifyImage(app, image)
-    for row in range(imageHeight):
+    image, DisplayImageWidth, DisplayImageHeight = modifyImage(app, image, imageWidth, imageHeight)
+    for row in range(DisplayImageHeight):
         rowList = []
-        for col in range(imageWidth):
+        for col in range(DisplayImageWidth):
             currPixel = image.getpixel((col, row))
             rowList.append(convertToAscii(currPixel, inverse = inverse) * 2) 
             #double it up, cuz character width is smaller than the height
@@ -46,10 +46,31 @@ def getNewImage(app, image, inverse = False):
     print("done!")
 
 
-def modifyImage(app, image):
-    shunkenSize = 4
-    imageWidth, imageHeight = app.PILImage.size
-    image = image.resize((imageWidth // shunkenSize, imageHeight // shunkenSize)).convert('L')
-    # image = image.convert('L')
+def modifyImage(app, image, imageWidth, imageHeight):
+    targetCols = int(imageWidth // (app.charWidth* 2))
+    targetRows = int(imageHeight // app.charHeight)
+    print(f'display: {imageWidth}x{imageHeight}, target: {targetCols}x{targetRows}, charWidth: {app.charWidth}, fontSize: {app.fontSize}')
+    ...
+    image = image.resize((targetCols, targetRows)).convert('L')
     imageWidth, imageHeight = image.size
     return image, imageWidth, imageHeight
+
+#This function is written by Claude
+# def exportToPNG(app, outputPath='output.png'):
+#     rows, cols = len(app.asciiArray), len(app.asciiArray[0])
+    
+#     charWidth = app.fontSize
+#     charHeight = app.fontSize * 2
+    
+#     imgWidth = cols * charWidth
+#     imgHeight = rows * charHeight
+    
+#     canvas = Image.new('RGB', (imgWidth, imgHeight), color='white')
+#     draw = ImageDraw.Draw(canvas)
+    
+#     for row in range(rows):
+#         rowString = ''.join(app.asciiArray[row])
+#         draw.text((0, row * charHeight), rowString, fill='black')
+    
+#     canvas.save(outputPath)
+#     print(f'saved to {outputPath}')
